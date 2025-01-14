@@ -3,13 +3,20 @@ import App from './App.vue';
 import { createI18n } from 'vue-i18n';
 
 // Importa os arquivos de idioma
-import messages from './locales';
+import en from './locales/en.json';
+import pt from './locales/pt.json';
+
+// Define as mensagens de tradução
+const messages = {
+  en,
+  pt,
+};
 
 // Configuração do i18n
 const i18n = createI18n({
   locale: 'en', // Idioma padrão
-  fallbackLocale: 'pt', // Caso o idioma não esteja disponível
-  messages,
+  fallbackLocale: 'pt', // Idioma de fallback
+  messages, // Passa as mensagens aqui!
 });
 
 const app = createApp(App);
