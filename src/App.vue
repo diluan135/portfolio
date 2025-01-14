@@ -1,13 +1,15 @@
 <template>
   <div :class="{ 'dark-mode': isDarkMode }" class="background">
-    <div class="d-flex flex-row-reverse header">
-      <div class="col-3">
-        <select v-model="$i18n.locale">
-          <option value="en">English</option>
-          <option value="pt">Português</option>
-        </select>
+    <div class="d-flex flex-row-reverse header align-items-center">
+      <div class="col-1">
+        <div @click="toggleLanguage" class="language-toggle">
+          <img  v-if="$i18n.locale === 'en'" src="./assets/usa_flag.png" alt="English" class="language-icon" />
+          <img v-else src="./assets/br_flag.png" alt="Português" class="language-icon" />
+          <p>{{ $t('language') }}</p>
+        </div>
+
       </div>
-      <div class="col-3">
+      <div style="margin-right: -30px;" class="col-1">
         <input type="checkbox" id="darkmode-toggle" v-model="isDarkMode">
         <label for="darkmode-toggle" class="darkmode-toggle-label">
           <svg class="moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,8 +57,12 @@
       </div>
     </div>
     <div>
-      <h1>{{ $t('welcome') }}</h1>
-      <p>{{ $t('about') }}</p>
+      <transition name="fade" mode="out-in">
+        <h1 :key="$i18n.locale">{{ $t('welcome') }}</h1>
+      </transition>
+      <transition name="fade" mode="out-in">
+        <p :key="$i18n.locale">{{ $t('about') }}</p>
+      </transition>
     </div>
   </div>
 </template>
@@ -69,15 +75,15 @@ export default {
       isDarkMode: false,  // controla o estado do tema
     };
   },
+  methods: {
+    toggleLanguage() {
+      // Alterna entre inglês e português
+      if (this.$i18n.locale === 'en') {
+        this.$i18n.locale = 'pt';
+      } else {
+        this.$i18n.locale = 'en';
+      }
+    },
+  },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-</style>
