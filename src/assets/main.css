@@ -1,0 +1,93 @@
+.header{
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.dark-mode .header {
+    background-color: #121212;
+    transition: 0.3s;
+}
+
+/* Estilos específicos para o toggle de dark mode */
+input#darkmode-toggle {
+    display: none;
+}
+
+input#darkmode-toggle+.darkmode-toggle-label {
+    width: 500px;
+    height: 200px;
+    position: relative;
+    display: block;
+    background-color: #ebebeb;
+    border-radius: 200px;
+    box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input#darkmode-toggle+.darkmode-toggle-label:after {
+    content: "";
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(180deg, #ffcc89, #d8860b);
+    border-radius: 180px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+}
+
+input#darkmode-toggle:checked+.darkmode-toggle-label {
+    background: #242424;
+}
+
+input#darkmode-toggle:checked+.darkmode-toggle-label:after {
+    left: 490px;
+    transform: translateX(-100%);
+    background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+/* Estilos para o fundo da página no modo dark */
+.background {
+    width: 100vw;
+    height: 100vh;
+    background: #ebebeb;
+    z-index: -1;
+    position: absolute;
+    transition: 0.3s;
+}
+
+.background.dark-mode {
+    background: #242424;
+}
+
+/* Estilos para os ícones de sol e lua */
+.darkmode-toggle-label svg {
+    position: absolute;
+    width: 120px;
+    top: 40px;
+    z-index: 100;
+}
+
+.darkmode-toggle-label svg.sun {
+    left: 40px;
+    fill: rgba(255, 255, 255, 0);
+    stroke: #ff0909;
+    transition: 0.3s;
+}
+
+.darkmode-toggle-label svg.moon {
+    left: 340px;
+    fill: rgba(0, 0, 0, 0);
+    transition: 0.3s;
+}
+
+input#darkmode-toggle:checked+.darkmode-toggle-label svg.sun {
+    fill: rgba(217, 9, 9, 0);
+}
+
+input#darkmode-toggle:checked+.darkmode-toggle-label svg.moon {
+    fill: #e6b802;
+}
