@@ -2,5 +2,8 @@
     "welcome": "Welcome to my portfolio",
     "about": "About Me",
     "contact": "Contact",
-    "language": "Language"
+    "language": "Language",
+    "projects": "Projects",
+    "services": "Services",
+    "certificates": "certificates"
   }
