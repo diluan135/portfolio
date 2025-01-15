@@ -5,6 +5,11 @@
     "language": "Idioma",
     "projects": "Projetos",
     "services": "Serviços",
-    "certificates": "Certificados"
+    "certificates": "Certificados",
+    "description": "Me chamo Diluan Lima de Matos, estou cursando o último grau de Engenharia de Software na UEPG e estou a procura de um emprego como desenvolvedor.",
+    "actually": "Atualmente, atuo como desenvolvedor fullstack, aproveitando minha experiência como designer gráfico para criar interfaces intuitivas e eficientes, sempre priorizando a experiência do usuário e mantendo um design elegante e funcional. ",
+    "aboutMe": "    Possuo experiência sólida tendo realizado alguns projetos utilizando PHP, Laravel, VueJS, HTML, CSS e Bootstrap, além de conhecimentos avançados em ferramentas de design como Photoshop e Illustrator. Busco integrar minhas habilidades em programação e design para desenvolver soluções completas e de alta qualidade, alinhadas às necessidades de cada projeto.",
+    "skills": "Habilidades"
+
   }
   

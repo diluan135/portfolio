@@ -5,7 +5,7 @@
                 <p :key="$i18n.locale">{{ $t('about') }}</p>
             </button>
             <div class="vertical-divider"></div>
-            <button class="botao" :class="{ active: currentView === 'Home' }" @click="changeView('Home')">
+            <button class="botao" :class="{ active: currentView === 'Projects' }" @click="changeView('Projects')">
                 <p :key="$i18n.locale">{{ $t('projects') }}</p>
             </button>
             <div class="vertical-divider"></div>

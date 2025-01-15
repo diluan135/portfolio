@@ -1,8 +1,11 @@
 <template>
   <div :class="{ 'dark-mode': isDarkMode }" class="background">
     <AppHeader @toggle-dark-mode="isDarkMode = $event" :isDarkMode="isDarkMode" />
-    <p>currentView = {{ currentView }}</p>
-    <component :is="currentViewComponent"></component>
+    <component 
+      :is="currentViewComponent"
+      :isDarkMode="isDarkMode"
+      style="padding: 5vh 5vw 0px 2vw"
+    />
   </div>
 </template>
 

@@ -5,5 +5,6 @@
     "language": "Language",
     "projects": "Projects",
     "services": "Services",
-    "certificates": "certificates"
+    "certificates": "certificates",
+    "aboutMe": "Currently, I work as a full-stack developer, leveraging my experience as a graphic designer to create intuitive and efficient interfaces, always prioritizing user experience and maintaining an elegant and functional design. \nI have solid experience having completed some projects using PHP, Laravel, VueJS, HTML, CSS, and Bootstrap, in addition to advanced knowledge in design tools such as Photoshop and Illustrator. I aim to integrate my programming and design skills to develop complete and high-quality solutions, aligned with the needs of each project."
   }
