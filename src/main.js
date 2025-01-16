@@ -5,6 +5,8 @@ import { createI18n } from 'vue-i18n';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './assets/main.css';
+import '@fortawesome/fontawesome-free/css/all.css';
+
 
 
 // Importa os arquivos de idioma

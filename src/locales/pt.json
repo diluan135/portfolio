@@ -1,15 +1,23 @@
 {
-    "welcome": "Boas vindas ao meu portfólio",
-    "about": "Sobre Mim",
-    "contact": "Contato",
-    "language": "Idioma",
-    "projects": "Projetos",
-    "services": "Serviços",
-    "certificates": "Certificados",
-    "description": "Me chamo Diluan Lima de Matos, estou cursando o último grau de Engenharia de Software na UEPG e estou a procura de um emprego como desenvolvedor.",
-    "actually": "Atualmente, atuo como desenvolvedor fullstack, aproveitando minha experiência como designer gráfico para criar interfaces intuitivas e eficientes, sempre priorizando a experiência do usuário e mantendo um design elegante e funcional. ",
-    "aboutMe": "    Possuo experiência sólida tendo realizado alguns projetos utilizando PHP, Laravel, VueJS, HTML, CSS e Bootstrap, além de conhecimentos avançados em ferramentas de design como Photoshop e Illustrator. Busco integrar minhas habilidades em programação e design para desenvolver soluções completas e de alta qualidade, alinhadas às necessidades de cada projeto.",
-    "skills": "Habilidades"
-
-  }
-  
+  "welcome": "Boas vindas ao meu portfólio",
+  "about": "Sobre Mim",
+  "contact": "Contato",
+  "language": "Idioma",
+  "projects": "Projetos",
+  "services": "Serviços",
+  "certificates": "Certificados",
+  "description": "Me chamo Diluan Lima de Matos, estou cursando o último grau de Engenharia de Software na UEPG e estou a procura de um emprego como desenvolvedor.",
+  "actually": "Atualmente, atuo como desenvolvedor fullstack, aproveitando minha experiência como designer gráfico para criar interfaces intuitivas e eficientes, sempre priorizando a experiência do usuário e mantendo um design elegante e funcional. ",
+  "aboutMe": "    Possuo experiência sólida tendo realizado alguns projetos utilizando PHP, Laravel, VueJS, HTML, CSS e Bootstrap, além de conhecimentos avançados em ferramentas de design como Photoshop e Illustrator. Busco integrar minhas habilidades em programação e design para desenvolver soluções completas e de alta qualidade, alinhadas às necessidades de cada projeto.",
+  "skills": "Habilidades",
+  "principal softskills": "Principais Softskills",
+  "emocional inteligence": "Inteligência Emocional",
+  "communication": "Comunicação",
+  "teamwork": "Trabalho em Equipe",
+  "pressure": "Capacidade de Trabalhar Sob Pressão",
+  "see softskills": "Ver softSkills",
+  "emotional inteligence description": "Inteligência emocional adquirida através de várias experiências de liderança e construção de empatia.",
+  "communication description": "Habilidades de comunicação desenvolvidas ao trabalhar com atendimento ao público e com outras pessoas.",
+  "teamwork description": "Trabalho em equipe desenvolvido em projetos colaborativos e dinâmicas de grupo ao longo dos anos.",
+  "pressure description": "Gestão de pressão aprimorada em situações de trabalho de alta pressão como projetos de curto prazo ou épocas de alta demanda."
+}

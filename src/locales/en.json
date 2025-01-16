@@ -1,10 +1,23 @@
 {
-    "welcome": "Welcome to my portfolio",
-    "about": "About Me",
-    "contact": "Contact",
-    "language": "Language",
-    "projects": "Projects",
-    "services": "Services",
-    "certificates": "certificates",
-    "aboutMe": "Currently, I work as a full-stack developer, leveraging my experience as a graphic designer to create intuitive and efficient interfaces, always prioritizing user experience and maintaining an elegant and functional design. \nI have solid experience having completed some projects using PHP, Laravel, VueJS, HTML, CSS, and Bootstrap, in addition to advanced knowledge in design tools such as Photoshop and Illustrator. I aim to integrate my programming and design skills to develop complete and high-quality solutions, aligned with the needs of each project."
-  }
+  "welcome": "Welcome to my portfolio",
+  "about": "About Me",
+  "contact": "Contact",
+  "language": "Language",
+  "projects": "Projects",
+  "services": "Services",
+  "certificates": "Certificates",
+  "description": "My name is Diluan Lima de Matos, I'm in the final year of Software Engineering at UEPG, and I'm looking for a job as a developer.",
+  "actually": "Currently, I work as a full-stack developer, leveraging my experience as a graphic designer to create intuitive and efficient interfaces, always prioritizing the user experience and maintaining an elegant and functional design.",
+  "aboutMe": "I have solid experience, having worked on some projects using PHP, Laravel, VueJS, HTML, CSS, and Bootstrap, in addition to advanced knowledge in design tools such as Photoshop and Illustrator. I aim to integrate my programming and design skills to develop comprehensive and high-quality solutions, tailored to the needs of each project.",
+  "skills": "Skills",
+  "principal softskills": "Key Soft Skills",
+  "emocional inteligence": "Emotional Intelligence",
+  "communication": "Communication",
+  "teamwork": "Teamwork",
+  "pressure": "Ability to Work Under Pressure",
+  "see softskills": "See Soft Skills",
+  "emotional inteligence description": "Emotional intelligence gained through various leadership experiences and building empathy.",
+  "communication description": "Communication skills developed through working with customer service and collaborating with others.",
+  "teamwork description": "Teamwork skills developed in collaborative projects and group dynamics over the years.",
+  "pressure description": "Pressure management honed in high-pressure work situations like short-term projects or peak-demand periods."
+}

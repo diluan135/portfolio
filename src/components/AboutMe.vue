@@ -7,61 +7,69 @@
     <!-- Skills Section -->
     <div class="row justify-content-center align-items-center text-center">
 
-      <div class="box col-6">
+      <div class="box col-7">
         <h3>{{ $t('skills') }}</h3>
         <div class="skills-chart d-flex justify-content-center">
           <!-- Usando v-if para destruir e recriar o gráfico sempre que isDarkMode mudar -->
-          <BarChart v-if="teste == 0" :data="chartData" :options="chartOptions" />
+          <BarChart v-if="barra == 0" :data="chartData" :options="chartOptions" />
         </div>
       </div>
-      <!-- Soft Skills Section -->
-      <div style="margin-left: 20px;" class="col">
-        <h2 style="padding-top: 10px;">Principais Softskills</h2>
-        <div class="row" style="margin-top:20px;">
-          <div style="height: 20vh" class="box col-6">
-            <li><i class="icon-emotional-intelligence"></i> Inteligência Emocional</li>
-          </div>
-          <div style="margin-left: 20px; height: 20vh" class="box col">
-            <li><i class="icon-communication"></i> Comunicação</li>
-          </div>
-        </div>
-        <div style="margin-top:20px;" class="row">
-          <div style="height: 20vh" class="box col-6">
-            <li><i class="icon-teamwork"></i> Trabalho em Equipe</li>
-          </div>
-          <div style="margin-left: 20px; height: 20vh" class="box col align-self-end">
-            <li><i class="icon-pressure"></i> Capacidade de Trabalhar Sob Pressão</li>
-          </div>
+    </div>
+
+
+    <!-- Soft Skills Section -->
+    <div class="row justify-content-center align-items-center text-center">
+      <div class="boxSkills col-7">
+        <div>
+          <h3 :key="$i18n.locale" style="padding-top: 10px; cursor: pointer;" @click="softSkills = !softSkills">
+            {{ softSkills ? $t('principal softskills') : $t('see softskills') }}
+            <i :class="softSkills ? 'fa fa-chevron-up' : 'fa fa-chevron-down'" style="margin-left: 8px;"></i>
+          </h3>
+          <transition name="fade-slide">
+            <div v-if="softSkills" class="row" style="margin-top:20px;">
+              <div class="col-3 text-center tooltip-container" :title="$t('emotional inteligence description')">
+                <img :src="isDarkMode ? require('@/assets/emotionalBlack.png') : require('@/assets/emotional.png')"
+                  alt="Emotional Intelligence" class="softIcon" />
+                <p>{{ $t('emocional inteligence') }}</p>
+                <div class="tooltip">{{ $t('emotional inteligence description') }}</div>
+              </div>
+
+              <div class="col-3 text-center tooltip-container" :title="$t('communication description')">
+                <img
+                  :src="isDarkMode ? require('@/assets/communicationBlack.png') : require('@/assets/communication.png')"
+                  alt="Communication" class="softIcon" />
+                <p>{{ $t('communication') }}</p>
+                <div class="tooltip">{{ $t('communication description') }}</div>
+              </div>
+
+              <div class="col-3 text-center tooltip-container" :title="$t('teamwork description')">
+                <img :src="isDarkMode ? require('@/assets/teamworkBlack.png') : require('@/assets/teamwork.png')"
+                  alt="Teamwork" class="softIcon" />
+                <p>{{ $t('teamwork') }}</p>
+                <div class="tooltip">{{ $t('teamwork description') }}</div>
+              </div>
+
+              <div class="col-3 text-center tooltip-container" :title="$t('pressure description')">
+                <img :src="isDarkMode ? require('@/assets/pressureBlack.png') : require('@/assets/pressure.png')"
+                  alt="Pressure" class="softIcon" />
+                <p>{{ $t('pressure') }}</p>
+                <div class="tooltip">{{ $t('pressure description') }}</div>
+              </div>
+            </div>
+
+          </transition>
+
         </div>
       </div>
     </div>
 
     <!-- About Section -->
-    <div style="margin-top:30px;" class="row">
-      <div class="box col">
+    <div class="row justify-content-center align-items-center text-center">
+      <div class="box col-7">
         <h3 :key="$i18n.locale">{{ $t('about') }}</h3>
         <p :key="$i18n.locale">{{ $t('actually') }}</p>
         <p :key="$i18n.locale">{{ $t('aboutMe') }}</p>
       </div>
-    </div>
-
-    <!-- Contact Section -->
-    <div class="contacts">
-      <a href="https://linkedin.com/in/yourprofile" target="_blank">
-        <i class="icon-linkedin">LinkedIn</i>
-      </a>
-      <a href="mailto:your.email@example.com">
-        <i class="icon-email">Email</i>
-      </a>
-      <a href="https://wa.me/yourwhatsappnumber" target="_blank">
-        <i class="icon-whatsapp">WhatsApp</i>
-      </a>
-      <a href="https://github.com/yourgithub" target="_blank">
-        <i class="icon-github">GitHub</i>
-      </a>
-      <a href="https://instagram.com/yourinstagram" target="_blank">
-        <i class="icon-instagram">Instagram</i>
-      </a>
     </div>
   </div>
 </template>
@@ -83,11 +91,12 @@ export default {
   },
   data() {
     return {
+      softSkills: false,
       rosa: 'rgb(255, 34, 218)',
       rosaEscuro: 'rgb(255, 34, 218, 0.5)',
       azul: 'rgba(47, 203, 205, 0.6)',
       azulEscuro: 'rgb(47, 203, 205, 0.3)',
-      teste: 0,
+      barra: 0,
       skills: [
         { name: 'VueJs', level: 8 },
         { name: 'Laravel', level: 7 },
@@ -137,9 +146,9 @@ export default {
   watch: {
     isDarkMode(newVal) {
       this.updateChartColors(newVal);
-      this.teste = 1;
+      this.barra = 1;
       setTimeout(() => {
-        this.teste = 0;
+        this.barra = 0;
       }, 10); // 3000 milissegundos = 3 segundos
     }
   },
