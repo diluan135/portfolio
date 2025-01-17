@@ -2,7 +2,7 @@
   <div :class="{ 'dark-mode': isDarkMode }" class="background">
     <AppHeader @toggle-dark-mode="isDarkMode = $event" :isDarkMode="isDarkMode" />
     <transition name="fade" mode="out-in">
-      <component :is="currentViewComponent" :isDarkMode="isDarkMode" style="padding: 5vh 5vw 0px 2vw" />
+      <component :is="currentViewComponent" :isDarkMode="isDarkMode" style="padding: 10vh 5vw 5vh 5vw" />
     </transition>
 
     <FloatingContacts :isDarkMode="isDarkMode" />
@@ -36,7 +36,7 @@ export default {
         case "Certificates":
           return CertificatesView;
         default:
-          return AboutMe;
+          return ProjectsView;
       }
     },
   },

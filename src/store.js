@@ -3,7 +3,7 @@ import { createStore } from 'vuex';
 export default createStore({
     state: {
         isDarkMode: false,
-        currentView: 'AboutMe',
+        currentView: 'Projects',
       },
       mutations: {
         toggleDarkMode(state) {

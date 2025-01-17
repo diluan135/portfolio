@@ -105,11 +105,12 @@ export default {
         { name: 'HTML', level: 7 },
         { name: 'Bootstrap', level: 7 },
         { name: 'Python', level: 6 },
+        { name: 'Flutter', level: 5 },
         { name: 'English', level: 8 },
+        { name: 'Git', level: 6 },
+        { name: 'MySql', level: 5 },
         { name: 'Photoshop', level: 9 },
         { name: 'Illustrator', level: 6 },
-        { name: 'Git', level: 6 },
-        { name: 'MySql', level: 5 }
       ],
       chartData: {
         labels: [], // Nomes das habilidades
