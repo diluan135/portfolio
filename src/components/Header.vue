@@ -13,7 +13,7 @@
                 <p :key="$i18n.locale">{{ $t('services') }}</p>
             </button>
             <div class="vertical-divider"></div>
-            <button class="botao" :class="{ active: currentView === 'Certificates' }" @click="changeView('Certificates')">
+            <button v-if="showCertificates" class="botao" :class="{ active: currentView === 'Certificates' }" @click="changeView('Certificates')">
                 <p :key="$i18n.locale">{{ $t('certificates') }}</p>
             </button>
             <div class="vertical-divider"></div>
@@ -63,6 +63,11 @@
 import { mapState, mapMutations } from 'vuex';
 
 export default {
+    data() {
+        return {
+            showCertificates: false
+        }
+    },
     name: 'AppHeader',
     props: {
         isDarkMode: {

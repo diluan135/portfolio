@@ -92,8 +92,8 @@ export default {
   data() {
     return {
       softSkills: false,
-      rosa: 'rgb(255, 34, 218)',
-      rosaEscuro: 'rgb(255, 34, 218, 0.5)',
+      branco: 'rgb(34, 133, 255)',
+      brancoEscuro: 'rgba(34, 133, 255, 0.5)',
       azul: 'rgba(47, 203, 205, 0.6)',
       azulEscuro: 'rgb(47, 203, 205, 0.3)',
       barra: 0,
@@ -118,8 +118,8 @@ export default {
           {
             label: 'Skill level',
             data: [], // Níveis de habilidade
-            backgroundColor: this.isDarkMode ? this.azulEscuro : this.azul, // Cor das barras baseada no modo
-            borderColor: this.isDarkMode ? this.azul : this.azul,
+            backgroundColor: this.isDarkMode ? this.azulEscuro : this.brancoEscuro, // Cor das barras baseada no modo
+            borderColor: this.isDarkMode ? this.azul : this.branco,
             borderWidth: 1,
             barThickness: 38, // Aumenta a espessura das barras
             categoryPercentage: 1, // Aumenta o espaçamento entre as barras
@@ -156,8 +156,8 @@ export default {
   methods: {
     updateChartColors(isDarkMode) {
       // Atualiza as cores das barras dinamicamente
-      this.chartData.datasets[0].backgroundColor = isDarkMode ? this.azulEscuro : this.azul;
-      this.chartData.datasets[0].borderColor = isDarkMode ? this.azul : this.azul;
+      this.chartData.datasets[0].backgroundColor = isDarkMode ? this.azulEscuro : this.brancoEscuro;
+      this.chartData.datasets[0].borderColor = isDarkMode ? this.azul : this.branco;
       this.chartData.datasets[0].borderWidth = 2;
     }
   },
@@ -168,8 +168,8 @@ export default {
       datasets: [
         {
           label: 'Skill level',
-          backgroundColor: this.isDarkMode ? this.azulEscuro : this.azul, // Cor das barras baseada no modo
-          borderColor: this.isDarkMode ? this.azul : this.azul,
+          backgroundColor: this.isDarkMode ? this.azulEscuro : this.brancoEscuro, // Cor das barras baseada no modo
+          borderColor: this.isDarkMode ? this.azul : this.branco,
           data: this.skills.map(skill => skill.level) // Níveis de habilidade
         }
       ]

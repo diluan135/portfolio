@@ -1,4 +1,4 @@
-/* White:: rgb(255, 34, 218) #ff22da               || Black::         rgb(47, 203, 205) #2fcbd5 */
+/* White:: rgb(34, 133, 255) #2275ff               || Black::         rgb(47, 203, 205) #2fcbd5 */
 
 /*-------------------------------------------------------------------------------------------------*/
 /*                                          PROJECTS VIEW                                          */
@@ -47,13 +47,13 @@
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: rgb(255, 34, 218); /* Cor padrão */
+    background-color: rgb(34, 255, 255); /* Cor padrão */
     transition: background-color 0.3s ease; /* Transição suave */
 }
 
 .carousel-control-prev-icon:hover,
 .carousel-control-next-icon:hover {
-    background-color: rgb(255, 0, 212); /* Nova cor ao passar o mouse */
+    background-color: rgb(34, 133, 255); /* Nova cor ao passar o mouse */
 }
 
 .dark-mode .carousel-control-prev-icon,
@@ -83,7 +83,7 @@
 .contact-ball {
     width: 60px;
     height: 60px;
-    background-color: rgb(255, 34, 218);
+    background-color: rgb(34, 133, 255);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -125,7 +125,7 @@
 }
 
 .contact-option:hover {
-    background-color: rgb(255, 34, 218)
+    background-color: rgb(34, 133, 255)
 }
 
 .dark-mode .contact-option,
@@ -434,7 +434,7 @@ html {
 }
 
 .botao.active {
-    background-color: rgb(255, 34, 218);
+    background-color: rgb(34, 133, 255);
     color: #fff;
 }
 
@@ -471,7 +471,7 @@ p {
 
 h1,
 h3 {
-    color: rgb(255, 34, 218);
+    color: rgb(34, 133, 255);
 }
 
 .dark-mode h1,

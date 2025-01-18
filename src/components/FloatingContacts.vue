@@ -116,7 +116,7 @@
   .contact-ball {
     width: 60px;
     height: 60px;
-    background-color: rgb(255, 34, 218);
+    background-color: rgb(34, 133, 255);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -155,7 +155,7 @@
   }
   
   .contact-option:hover {
-    background-color: rgb(255, 34, 218)
+    background-color: rgb(34, 133, 255)
   }
 
   .dark-mode .contact-option, .dark-mode  .contact-ball {
