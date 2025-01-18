@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>{{ $t('projects') }}</h1>
+        <h1 style="margin-bottom: 10px">{{ $t('projects') }}</h1>
         <div class="row justify-content-center align-items-center text-center">
 
 
@@ -10,7 +10,7 @@
                     <p class="project">{{ $t('escutaLittleDescription') }}</p>
                     <div id="carouselAdmin" class="col-6 carousel slide" data-bs-ride="carousel">
                         <div style="margin-bottom: 10px;">
-                            <h4 style="margin-bottom: -5px;">{{ $t('administratorVersion') }}</h4>
+                            <h4 style="margin-bottom: -5px; color: rgb(82, 82, 82)">{{ $t('administratorVersion') }}</h4>
                             <a style="font-size: 12px;" :href="escutaAdminLink" target="_blank">{{ $t('seeOnGithub')
                                 }}</a>
                         </div>
@@ -35,7 +35,7 @@
                     </div>
                     <div id="carouselEscuta" class="col-6 carousel slide" data-bs-ride="carousel">
                         <div style="margin-bottom: 10px;">
-                            <h4 style="margin-bottom: -5px;">{{ $t('userVersion') }}</h4>
+                            <h4 style="margin-bottom: -5px; color: rgb(82, 82, 82)">{{ $t('userVersion') }}</h4>
                             <a style="font-size: 12px;" :href="escutaLink" target="_blank">{{ $t('seeOnGithub') }}</a>
                         </div>
                         <div class="carousel-inner-wrapper">
