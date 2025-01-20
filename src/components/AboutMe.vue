@@ -25,7 +25,8 @@
           </h3>
           <transition name="fade-slide">
             <div v-if="softSkills" class="row" style="margin-top:20px;">
-              <div class="col-6 col-md-3 text-center tooltip-container" :title="$t('emotional inteligence description')">
+              <div class="col-6 col-md-3 text-center tooltip-container"
+                :title="$t('emotional inteligence description')">
                 <img :src="isDarkMode ? require('@/assets/emotionalBlack.png') : require('@/assets/emotional.png')"
                   alt="Emotional Intelligence" class="softIcon" />
                 <p>{{ $t('emocional inteligence') }}</p>
@@ -74,7 +75,6 @@
 import { Bar } from 'vue-chartjs';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
 
-// Register the necessary chart components
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
 
 export default {
@@ -108,17 +108,18 @@ export default {
         { name: 'Photoshop', level: 9 },
         { name: 'Illustrator', level: 6 },
       ],
+      barThickness: 38, // valor inicial para telas maiores
       chartData: {
-        labels: [], // Nomes das habilidades
+        labels: [], 
         datasets: [
           {
             label: 'Skill level',
-            data: [], // Níveis de habilidade
-            backgroundColor: this.isDarkMode ? this.azulEscuro : this.brancoEscuro, // Cor das barras baseada no modo
+            data: [], 
+            backgroundColor: this.isDarkMode ? this.azulEscuro : this.brancoEscuro,
             borderColor: this.isDarkMode ? this.azul : this.branco,
             borderWidth: 1,
-            barThickness: 38, // Aumenta a espessura das barras
-            categoryPercentage: 1, // Aumenta o espaçamento entre as barras
+            barThickness: this.barThickness, // utiliza a variável de espessura
+            categoryPercentage: 0.85,
             barPercentage: 1
           }
         ]
@@ -126,7 +127,6 @@ export default {
       chartOptions: {
         elements: {
           bar: {
-            // Aumentar a largura das barras
             borderWidth: 20,
           }
         },
@@ -134,7 +134,7 @@ export default {
         scales: {
           y: {
             beginAtZero: true,
-            max: 10 // Nível máximo de habilidade
+            max: 10
           }
         }
       }
@@ -146,30 +146,41 @@ export default {
       this.barra = 1;
       setTimeout(() => {
         this.barra = 0;
-      }, 10); // 3000 milissegundos = 3 segundos
+      }, 10);
     }
   },
   methods: {
     updateChartColors(isDarkMode) {
-      // Atualiza as cores das barras dinamicamente
       this.chartData.datasets[0].backgroundColor = isDarkMode ? this.azulEscuro : this.brancoEscuro;
       this.chartData.datasets[0].borderColor = isDarkMode ? this.azul : this.branco;
       this.chartData.datasets[0].borderWidth = 2;
+    },
+    adjustBarThickness() {
+      if (window.innerWidth <= 768) {
+        this.barThickness = 25; // reduz a espessura das barras para telas pequenas
+      } else {
+        this.barThickness = 38; // valor original para telas maiores
+      }
+      this.chartData.datasets[0].barThickness = this.barThickness;
     }
   },
   mounted() {
-    // Agora que o componente foi montado, podemos definir os dados do gráfico
+    this.adjustBarThickness(); // Ajusta a espessura das barras na montagem do componente
+    window.addEventListener('resize', this.adjustBarThickness); // Ajusta ao redimensionar a tela
     this.chartData = {
-      labels: this.skills.map(skill => skill.name), // Habilidades
+      labels: this.skills.map(skill => skill.name),
       datasets: [
         {
           label: 'Skill level',
-          backgroundColor: this.isDarkMode ? this.azulEscuro : this.brancoEscuro, // Cor das barras baseada no modo
+          backgroundColor: this.isDarkMode ? this.azulEscuro : this.brancoEscuro,
           borderColor: this.isDarkMode ? this.azul : this.branco,
-          data: this.skills.map(skill => skill.level) // Níveis de habilidade
+          data: this.skills.map(skill => skill.level)
         }
       ]
     };
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.adjustBarThickness); // Remove o listener quando o componente for destruído
   }
 };
 </script>
@@ -178,5 +189,9 @@ export default {
 .skills-chart {
   height: 300px;
 }
-
+@media (max-width: 768px) {
+  .skills-chart {
+    height: 100%;
+  }
+}
 </style>

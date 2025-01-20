@@ -170,11 +170,9 @@
 
 .contact-ball:hover {
     opacity: 100%;
-    background-color: #ff0909;
 }
 
 .contact-ball:hover .contact-text {
-    background-color: #ff0909;
     display: block;
 }
 
