@@ -1,5 +1,5 @@
 <template>
-  <div class="floating-contacts" @click="handleOutsideClick">
+  <div class="floating-contacts" @click="handleOutsideClick" >
     <!-- Bolinha de contato -->
     <div class="contact-ball" @click.stop="showContacts = !showContacts" v-if="!showContacts">
       <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -207,6 +207,7 @@
                     </div>
                 </div>
             </div>
+            <a class="mt-3" href="https://github.com/diluan135/portfolio/" target="_blank">{{ $t('seeThisOnGithub') }}</a>
         </div>
     </div>
 </template>
