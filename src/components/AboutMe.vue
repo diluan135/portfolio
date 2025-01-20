@@ -67,6 +67,7 @@
         <p :key="$i18n.locale">{{ $t('actually') }}</p>
         <p :key="$i18n.locale">{{ $t('aboutMe') }}</p>
       </div>
+      <a class="mt-3" :href="curriculoLink" download>{{ $t('downloadResume') }}</a>
     </div>
   </div>
 </template>
@@ -79,6 +80,13 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default {
   name: 'BarChartComponent',
+  computed: {
+    // Computa o link para o currículo baseado no idioma atual
+    curriculoLink() {
+      const idioma = this.$i18n.locale;
+      return idioma === 'en' ? '/resume-en.pdf' : '/curriculo-pt-br.pdf';
+    }
+  },
   props: {
     isDarkMode: Boolean
   },
