@@ -74,7 +74,7 @@ export default {
     props: {
         isDarkMode: {
             type: Boolean,
-            default: false,
+            default: true,
         },
     },
     computed: {

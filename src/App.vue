@@ -45,6 +45,27 @@ export default {
       isDarkMode: false,
     };
   },
+  created() {
+    // Detectar preferências do usuário para o modo escuro
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      // Se houver uma preferência salva, usar essa
+      this.isDarkMode = savedTheme === "dark";
+    } else {
+      // Caso contrário, verificar a preferência do dispositivo
+      this.isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+
+    // Adicionar listener para mudanças no modo de cor preferido (navegador ou dispositivo)
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        if (!savedTheme) {
+          // Se não houver preferência salva, atualizar com base no dispositivo
+          this.isDarkMode = e.matches;
+        }
+      });
+  },
   methods: {
     ...mapMutations(["setCurrentView"]),
   },

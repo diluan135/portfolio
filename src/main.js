@@ -12,7 +12,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 // Importa os arquivos de idioma
 import en from './locales/en.json';
 import pt from './locales/pt.json';
-
+const userLanguage = navigator.language.split('-')[0];
 // Define as mensagens de tradução
 const messages = {
   en,
@@ -21,7 +21,7 @@ const messages = {
 
 // Configuração do i18n
 const i18n = createI18n({
-  locale: 'en', // Idioma padrão
+  locale: userLanguage, // Idioma padrão
   fallbackLocale: 'pt', // Idioma de fallback
   messages, // Passa as mensagens aqui!
 });

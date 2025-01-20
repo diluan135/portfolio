@@ -64,8 +64,11 @@ export default {
   },
   methods: {
     handleOutsideClick() {
-      this.showContacts = false;
-    },  
+      const contactElement = this.$el; // Referência ao componente raiz
+      if (!contactElement.contains(event.target)) {
+        this.showContacts = false; // Fecha as opções se clicar fora
+      }
+    },
     showContactImage(contact) {
       this.currentContactImage = contact;
     },
@@ -80,9 +83,14 @@ export default {
       }, 500); // 500ms de delay para reiniciar a bolinha de contato
     }
   },
+  mounted() {
+    // Adiciona o listener global de clique
+    document.addEventListener("click", this.handleOutsideClick);
+  },
   beforeUnmount() {
     // Limpar o timeout se o componente for destruído
     clearTimeout(this.timeoutId);
+    document.removeEventListener("click", this.handleOutsideClick);
   }
 };
 </script>
@@ -173,10 +181,10 @@ export default {
 }
 
 .contact-ball:hover {
-  opacity: 0;
+  background-color: rgb(133, 188, 255)
 }
 
 .contact-ball:hover .contact-text {
-  display: none;
+  background-color: rgb(34, 133, 255)
 }
 </style>
