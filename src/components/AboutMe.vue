@@ -1,13 +1,12 @@
 <template>
   <div>
     <!-- Header Section -->
-    <h1 :key="$i18n.locale">{{ $t('welcome') }}</h1>
-    <p :key="$i18n.locale">{{ $t('description') }}</p>
+    <h1 :key="$i18n.locale" class="text-center">{{ $t('welcome') }}</h1>
+    <p :key="$i18n.locale" class="text-center">{{ $t('description') }}</p>
 
     <!-- Skills Section -->
     <div class="row justify-content-center align-items-center text-center">
-
-      <div class="box col-7">
+      <div class="box col-12 col-md-7">
         <h3>{{ $t('skills') }}</h3>
         <div class="skills-chart d-flex justify-content-center">
           <!-- Usando v-if para destruir e recriar o gráfico sempre que isDarkMode mudar -->
@@ -16,10 +15,9 @@
       </div>
     </div>
 
-
     <!-- Soft Skills Section -->
     <div class="row justify-content-center align-items-center text-center">
-      <div class="boxSkills col-7">
+      <div class="boxSkills col-12 col-md-7">
         <div>
           <h3 :key="$i18n.locale" style="padding-top: 10px; cursor: pointer;" @click="softSkills = !softSkills">
             {{ softSkills ? $t('principal softskills') : $t('see softskills') }}
@@ -27,14 +25,14 @@
           </h3>
           <transition name="fade-slide">
             <div v-if="softSkills" class="row" style="margin-top:20px;">
-              <div class="col-3 text-center tooltip-container" :title="$t('emotional inteligence description')">
+              <div class="col-6 col-md-3 text-center tooltip-container" :title="$t('emotional inteligence description')">
                 <img :src="isDarkMode ? require('@/assets/emotionalBlack.png') : require('@/assets/emotional.png')"
                   alt="Emotional Intelligence" class="softIcon" />
                 <p>{{ $t('emocional inteligence') }}</p>
                 <div class="tooltip">{{ $t('emotional inteligence description') }}</div>
               </div>
 
-              <div class="col-3 text-center tooltip-container" :title="$t('communication description')">
+              <div class="col-6 col-md-3 text-center tooltip-container" :title="$t('communication description')">
                 <img
                   :src="isDarkMode ? require('@/assets/communicationBlack.png') : require('@/assets/communication.png')"
                   alt="Communication" class="softIcon" />
@@ -42,30 +40,28 @@
                 <div class="tooltip">{{ $t('communication description') }}</div>
               </div>
 
-              <div class="col-3 text-center tooltip-container" :title="$t('teamwork description')">
+              <div class="col-6 col-md-3 text-center tooltip-container" :title="$t('teamwork description')">
                 <img :src="isDarkMode ? require('@/assets/teamworkBlack.png') : require('@/assets/teamwork.png')"
                   alt="Teamwork" class="softIcon" />
                 <p>{{ $t('teamwork') }}</p>
                 <div class="tooltip">{{ $t('teamwork description') }}</div>
               </div>
 
-              <div class="col-3 text-center tooltip-container" :title="$t('pressure description')">
+              <div class="col-6 col-md-3 text-center tooltip-container" :title="$t('pressure description')">
                 <img :src="isDarkMode ? require('@/assets/pressureBlack.png') : require('@/assets/pressure.png')"
                   alt="Pressure" class="softIcon" />
                 <p>{{ $t('pressure') }}</p>
                 <div class="tooltip">{{ $t('pressure description') }}</div>
               </div>
             </div>
-
           </transition>
-
         </div>
       </div>
     </div>
 
     <!-- About Section -->
     <div class="row justify-content-center align-items-center text-center">
-      <div class="box col-7">
+      <div class="box col-12 col-md-7">
         <h3 :key="$i18n.locale">{{ $t('about') }}</h3>
         <p :key="$i18n.locale">{{ $t('actually') }}</p>
         <p :key="$i18n.locale">{{ $t('aboutMe') }}</p>
@@ -180,23 +176,7 @@ export default {
 
 <style scoped>
 .skills-chart {
-  /* width: 100vw; */
   height: 300px;
 }
 
-.contacts {
-  display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.contacts a {
-  text-decoration: none;
-  font-size: 18px;
-}
-
-.contacts i {
-  margin-right: 5px;
-}
 </style>

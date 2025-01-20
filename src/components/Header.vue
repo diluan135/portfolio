@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex header align-items-center">
-        <div class="col d-flex align-items-center">
+        <div class="col-10 d-flex align-items-center">
             <button class="botao" :class="{ active: currentView === 'AboutMe' }" @click="changeView('AboutMe')">
                 <p :key="$i18n.locale">{{ $t('about') }}</p>
             </button>
@@ -13,12 +13,13 @@
                 <p :key="$i18n.locale">{{ $t('services') }}</p>
             </button>
             <div class="vertical-divider"></div>
-            <button v-if="showCertificates" class="botao" :class="{ active: currentView === 'Certificates' }" @click="changeView('Certificates')">
+            <button v-if="showCertificates" class="botao" :class="{ active: currentView === 'Certificates' }"
+                @click="changeView('Certificates')">
                 <p :key="$i18n.locale">{{ $t('certificates') }}</p>
             </button>
             <div class="vertical-divider"></div>
         </div>
-        <div style="margin-right: -30px;" class="col-1 ms-auto">
+        <div v-if="!isMobile" class="col-1 ms-auto">
             <input type="checkbox" id="darkmode-toggle" :checked="isDarkMode" @change="emitDarkMode" />
             <label for="darkmode-toggle" class="darkmode-toggle-label">
                 <svg class="moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -65,6 +66,7 @@ import { mapState, mapMutations } from 'vuex';
 export default {
     data() {
         return {
+            isMobile: window.innerWidth <= 768,
             showCertificates: false
         }
     },
@@ -80,6 +82,9 @@ export default {
     },
     methods: {
         ...mapMutations(['setCurrentView']),
+        updateIsMobile() {
+            this.isMobile = window.innerWidth <= 768;
+        },
         toggleLanguage() {
             if (this.$i18n.locale === 'en') {
                 this.$i18n.locale = 'pt';
@@ -93,6 +98,12 @@ export default {
         changeView(view) {
             this.setCurrentView(view);
         },
+    },
+    mounted() {
+        window.addEventListener("resize", this.updateIsMobile);
+    },
+    beforeUnmounted() {
+        window.removeEventListener("resize", this.updateIsMobile);
     },
 };
 </script>

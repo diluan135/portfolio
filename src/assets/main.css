@@ -181,9 +181,10 @@
 /*-------------------------------------------------------------------------------------------------*/
 
 .softIcon {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     margin-bottom: 10px;
+    
 }
 
 .tooltip-container {
@@ -222,16 +223,16 @@
     /* Mostra o tooltip ao passar o mouse */
 }
 
-.softIcon {
-    width: 60px;
-    /* Ajuste o tamanho do ícone */
-    height: 60px;
-    transition: transform 0.2s ease;
-}
 
 .tooltip-container:hover .softIcon {
     transform: scale(1.1);
     /* Aumenta o ícone levemente no hover */
+}
+
+@media (min-width: 768px) {
+    .box {
+        margin: 0 15px; /* Adiciona 15px de margem horizontal */
+    }
 }
 
 .box {
@@ -388,6 +389,31 @@ input#darkmode-toggle:checked+.darkmode-toggle-label svg.sun {
 
 input#darkmode-toggle:checked+.darkmode-toggle-label svg.moon {
     fill: #e6b802;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-wrap: wrap;
+    }
+    .botao {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+    }
+    .vertical-divider {
+        display: none;
+    }
+    .col {
+        flex-basis: 100%;
+        text-align: center;
+    }
+    #darkmode-toggle {
+        display: none;
+    }
+    .madeWithIcon {
+        width: auto;
+        height: 60px;
+        margin-bottom: 0px;
+    }
 }
 
 
