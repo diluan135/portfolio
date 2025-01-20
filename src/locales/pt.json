@@ -42,5 +42,7 @@
   "ConsultancyDescription": "Consultoria especializada para consumo e integração de APIs REST em sistemas existentes ou novos projetos. Implemento funcionalidades como autenticação, manipulação de dados massivos e comunicação em tempo real, garantindo a integração perfeita entre serviços.",
   "InterfaceDesign": "Design de Interfaces e Experiência do Usuário (UI/UX)",
   "InterfaceDesignDescription": "Criação de designs modernos, funcionais e alinhados às melhores práticas de experiência do usuário. Utilizando ferramentas como Photoshop e Illustrator, desenvolvo interfaces que combinam elegância e eficiência, proporcionando uma experiência agradável e intuitiva para os usuários.",
-  "offerServices": "Serviços oferecidos"
+  "offerServices": "Serviços oferecidos",
+  "Escuta": "Escuta"
+
 }
