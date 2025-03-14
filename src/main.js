@@ -50,3 +50,40 @@ const i18n = createI18n({
 app.use(i18n);
 app.use(store);
 app.mount('#app');
+
+// Cria o cursor principal
+const cursor = document.createElement('div');
+cursor.classList.add('custom-cursor');
+document.body.appendChild(cursor);
+
+// Atualiza a posição do cursor principal e cria o ghost apenas se não for clicável
+window.addEventListener('mousemove', (e) => {
+  // Atualiza a posição do cursor principal
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+
+  // Verifica se o cursor NÃO está em estado "clickable"
+  if (!cursor.classList.contains('clickable')) {
+    // Cria um ghost para o rastro
+    const ghost = document.createElement('div');
+    ghost.classList.add('cursor-ghost');
+    ghost.style.left = e.clientX + 'px';
+    ghost.style.top = e.clientY + 'px';
+    document.body.appendChild(ghost);
+
+    // Remove o ghost após a animação (1.8s, conforme o tempo definido)
+    setTimeout(() => {
+      ghost.remove();
+    }, 1800);
+  }
+});
+
+// Adiciona os eventos para elementos clicáveis
+document.querySelectorAll('button, a, [data-clickable]').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.classList.add('clickable');
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.classList.remove('clickable');
+  });
+});

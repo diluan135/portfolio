@@ -1,11 +1,20 @@
 <template>
   <div>
     <!-- Header Section -->
-    <h1 v-animate-on-scroll :key="$i18n.locale" class="text-center">{{ $t('welcome') }}</h1>
-    <p v-animate-on-scroll :key="$i18n.locale" class="text-center">{{ $t('description') }}</p>
+    <!-- <h1 v-animate-on-scroll :key="$i18n.locale" class="text-center">{{ $t('welcome') }}</h1>  -->
+    <div v-animate-on-scroll class="animated-text text-center" :style="{ color: isDarkMode ? '#2fcbd5' : '#2275ff' }">
+      <span>{{ currentWord }}</span>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <p v-animate-on-scroll :key="$i18n.locale" class="text-center custom-line">
+          {{ $t('description') }}
+        </p>
+      </div>
+    </div>
 
     <!-- Skills Section -->
-    <div class="row justify-content-center align-items-center text-center">
+    <div class="row justify-content-center align-items-center text-center mt-4">
       <div v-animate-on-scroll class="box col-12 col-md-7">
         <h3>{{ $t('skills') }}</h3>
         <div class="skills-chart d-flex justify-content-center">
@@ -19,10 +28,11 @@
     <div class="row justify-content-center align-items-center text-center">
       <div class="boxSkills col-12 col-md-7">
         <div v-animate-on-scroll>
-          <h3 :key="$i18n.locale" style="padding-top: 10px; cursor: pointer;" @click="softSkills = !softSkills">
+          <h3 :key="$i18n.locale" style="padding-top: 10px;" data-clickable @click="softSkills = !softSkills">
             {{ softSkills ? $t('principal softskills') : $t('see softskills') }}
             <i :class="softSkills ? 'fa fa-chevron-up' : 'fa fa-chevron-down'" style="margin-left: 8px;"></i>
           </h3>
+
           <transition name="fade-slide">
             <div v-if="softSkills" class="row" style="margin-top:20px;">
               <div class="col-6 col-md-3 text-center tooltip-container"
@@ -118,11 +128,11 @@ export default {
       ],
       barThickness: 38, // valor inicial para telas maiores
       chartData: {
-        labels: [], 
+        labels: [],
         datasets: [
           {
             label: 'Skill level',
-            data: [], 
+            data: [],
             backgroundColor: this.isDarkMode ? this.azulEscuro : this.brancoEscuro,
             borderColor: this.isDarkMode ? this.azul : this.branco,
             borderWidth: 1,
@@ -145,8 +155,14 @@ export default {
             max: 10
           }
         }
-      }
-    };
+      },
+      words: ["Full Stack Developer", "Software Developer", "Graphic Designer", "Software Engineer", "Front-end Developer",],
+      currentWord: "",
+      currentIndex: 0,
+      charIndex: 0,
+      isDeleting: false,
+      typingSpeed: 150, // Velocidade da digitação
+    }
   },
   watch: {
     isDarkMode(newVal) {
@@ -158,6 +174,35 @@ export default {
     }
   },
   methods: {
+    animateText() {
+      const typeEffect = () => {
+        const word = this.words[this.currentIndex];
+
+        if (!this.isDeleting) {
+          this.currentWord = word.substring(0, this.charIndex + 1);
+          this.charIndex++;
+
+          if (this.charIndex === word.length) {
+            this.isDeleting = true;
+            setTimeout(typeEffect, 1000); // Pausa após completar a palavra
+            return;
+          }
+        } else {
+          this.currentWord = word.substring(0, this.charIndex - 1);
+          this.charIndex--;
+
+          if (this.charIndex === 0) {
+            this.isDeleting = false;
+            this.currentIndex = (this.currentIndex + 1) % this.words.length; // Avança para a próxima palavra
+          }
+        }
+
+        setTimeout(typeEffect, this.isDeleting ? 50 : this.typingSpeed);
+      };
+
+      typeEffect();
+    },
+
     updateChartColors(isDarkMode) {
       this.chartData.datasets[0].backgroundColor = isDarkMode ? this.azulEscuro : this.brancoEscuro;
       this.chartData.datasets[0].borderColor = isDarkMode ? this.azul : this.branco;
@@ -173,6 +218,7 @@ export default {
     }
   },
   mounted() {
+    this.animateText();
     this.adjustBarThickness(); // Ajusta a espessura das barras na montagem do componente
     window.addEventListener('resize', this.adjustBarThickness); // Ajusta ao redimensionar a tela
     this.chartData = {
@@ -194,9 +240,34 @@ export default {
 </script>
 
 <style scoped>
+.animated-text {
+  font-size: 3em;
+  font-weight: bold;
+  color: #2fcbd5;
+  display: inline-block;
+  text-align: center;
+  /* Centraliza o texto */
+  width: 100%;
+  /* Garante que ocupe toda a largura do contêiner */
+}
+
+.animated-text span {
+  border-right: 3px solid #2fcbd5;
+  padding-right: 5px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+
 .skills-chart {
   height: 300px;
 }
+
 @media (max-width: 768px) {
   .skills-chart {
     height: 100%;

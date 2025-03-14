@@ -1,7 +1,7 @@
 <template>
-  <div class="floating-contacts" @click="handleOutsideClick" >
+  <div class="floating-contacts" data-clickable @click="handleOutsideClick" >
     <!-- Bolinha de contato -->
-    <div class="contact-ball" @click.stop="showContacts = !showContacts" v-if="!showContacts">
+    <div  class="contact-ball" @click.stop="showContacts = !showContacts" v-if="!showContacts">
       <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -22,28 +22,28 @@
         <img v-else src="@/assets/linkedin.png" alt="LinkedIn" />
       </a>
 
-      <a href="mailto:diluan135@gmail.com" class="contact-option" @mouseover="showContactImage('email')"
+      <a href="mailto:diluan135@gmail.com" class="contact-option" data-clickable @mouseover="showContactImage('email')"
         @mouseleave="resetContactImage">
         <div v-if="currentContactImage === 'email'" class="contact-name">{{ $t('email') }}</div>
         <img v-if="currentContactImage === 'email'" src="@/assets/email.png" alt="Email" />
         <img v-else src="@/assets/email.png" alt="Email" />
       </a>
 
-      <a href="https://wa.me/+5542984049847" target="_blank" class="contact-option"
+      <a href="https://wa.me/+5542984049847" target="_blank" class="contact-option" data-clickable
         @mouseover="showContactImage('whatsapp')" @mouseleave="resetContactImage">
         <div v-if="currentContactImage === 'whatsapp'" class="contact-name">{{ $t('whatsapp') }}</div>
         <img v-if="currentContactImage === 'whatsapp'" src="@/assets/whatsapp.png" alt="WhatsApp" />
         <img v-else src="@/assets/whatsapp.png" alt="WhatsApp" />
       </a>
 
-      <a href="https://github.com/diluan135" target="_blank" class="contact-option"
+      <a href="https://github.com/diluan135" target="_blank" class="contact-option" data-clickable
         @mouseover="showContactImage('github')" @mouseleave="resetContactImage">
         <div v-if="currentContactImage === 'github'" class="contact-name">{{ $t('github') }}</div>
         <img v-if="currentContactImage === 'github'" src="@/assets/github.png" alt="GitHub" />
         <img v-else src="@/assets/github.png" alt="GitHub" />
       </a>
 
-      <a href="https://instagram.com/diluanmatos" target="_blank" class="contact-option"
+      <a href="https://instagram.com/diluanmatos" target="_blank" class="contact-option" data-clickable
         @mouseover="showContactImage('instagram')" @mouseleave="resetContactImage">
         <div v-if="currentContactImage === 'instagram'" class="contact-name">{{ $t('instagram') }}</div>
         <img v-if="currentContactImage === 'instagram'" src="@/assets/instagram.png" alt="Instagram" />
@@ -113,7 +113,6 @@ export default {
   justify-content: center;
   color: white;
   font-size: 1.2em;
-  cursor: pointer;
   transition: opacity 0.3s;
   position: relative;
 }

@@ -13,14 +13,17 @@
                 <p :key="$i18n.locale">{{ $t('services') }}</p>
             </button>
             <div class="vertical-divider"></div>
+            <button class="botao" :class="{ active: currentView === 'HireMe' }" @click="changeView('HireMe')">
+                <p :key="$i18n.locale">{{ $t('HireMe') }}</p>
+            </button>
             <button v-if="showCertificates" class="botao" :class="{ active: currentView === 'Certificates' }"
                 @click="changeView('Certificates')">
                 <p :key="$i18n.locale">{{ $t('certificates') }}</p>
             </button>
-            <div class="vertical-divider"></div>
+            <!-- <div class="vertical-divider"></div> -->
         </div>
-        <div v-if="!isMobile" class="col-1 ms-auto">
-            <input type="checkbox" id="darkmode-toggle" :checked="isDarkMode" @change="emitDarkMode" />
+        <div v-if="!isMobile" data-clickable class="col-1 ms-auto">
+            <input type="checkbox" id="darkmode-toggle" style="cursor: none !important;" :checked="isDarkMode" @change="emitDarkMode" />
             <label for="darkmode-toggle" class="darkmode-toggle-label">
                 <svg class="moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -53,8 +56,8 @@
         </div>
         <div class="col-1">
             <div @click="toggleLanguage" class="language-toggle">
-                <img v-if="$i18n.locale === 'en'" src="../assets/usa_flag.png" alt="English" class="language-icon" />
-                <img v-else src="../assets/br_flag.png" alt="Português" class="language-icon" />
+                <img data-clickable v-if="$i18n.locale === 'en'" src="../assets/usa_flag.png" alt="English" class="language-icon" />
+                <img data-clickable v-else src="../assets/br_flag.png" alt="Português" class="language-icon" />
                 <p>{{ $t('language') }}</p>
             </div>
         </div>

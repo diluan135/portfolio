@@ -6,7 +6,7 @@
   "projects": "Projects",
   "services": "Services",
   "certificates": "Certificates",
-  "description": "My name is Diluan Lima de Matos. I am in the final year of my Software Engineering degree at UEPG and working as a fullstack developer.",
+  "description": "Building interfaces is not just about coding; it's about designing visual experiences that tell stories.",
   "actually": "Currently, I work as a full-stack developer, leveraging my graphic design experience to create intuitive and efficient interfaces, prioritizing user experience with an elegant and functional design.",
   "aboutMe": "I have solid experience in projects using PHP, Laravel, Vue.js, HTML, CSS, Bootstrap, and Flutter, along with advanced knowledge of tools like Photoshop and Illustrator. I aim to integrate my programming and design skills to develop comprehensive and high-quality solutions aligned with each project's needs.",
   "skills": "Skills",
@@ -45,5 +45,13 @@
   "offerServices": "Offered Services",
   "Escuta": "Escuta",
   "seeThisOnGithub": "See this project on Github",
-  "downloadResume": "Download Resume"
+  "downloadResume": "Download Resume",
+  "hireMe": "Hire me",
+  "hireMeTitle": "Hire me to build your Next Project!",
+  "emailPlaceholder": "Your email",
+  "phonePlaceholder": "Your phone",
+  "messagePlaceholder": "Your message",
+  "sendButton": "Send message",
+  "emailSuccess": "Email sent successfully!",
+  "emailError": "Failed to send email. Please try again."
 }
