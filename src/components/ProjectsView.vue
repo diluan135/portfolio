@@ -1,335 +1,453 @@
 <template>
-    <div>
-        <h1 v-animate-on-scroll class="mb-3">{{ $t('projects') }}</h1>
-        <div class="row justify-content-center align-items-center text-center">
-
-            <div class="box col-12 col-md-10 col-lg-7 mb-4">
-                <div v-animate-on-scroll class="row justify-content-center align-items-center text-center">
-                    <h3>{{ $t('Escuta') }}</h3>
-                    <p class="project">{{ $t('escutaLittleDescription') }}</p>
-                    <div  id="carouselAdmin" class="col-12 col-md-6 carousel slide mb-3" data-bs-ride="carousel">
-                        <div class="mb-2">
-                            <h4 class="mb-1">{{ $t('administratorVersion') }}</h4>
-                            <a class="small text-break" :href="escutaAdminLink" target="_blank">{{ $t('seeOnGithub')
-                                }}</a>
-                        </div>
-                        <div class="carousel-inner-wrapper">
-                            <div class="carousel-inner">
-                                <div class="carousel-item" v-for="(image, index) in escutaAdmin" :key="index"
-                                    :class="{ active: index === 0 }">
-                                    <img :src="image.src" class="d-block w-100" :alt="'Image ' + (index + 1)" />
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselAdmin"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselAdmin"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-
-                    <div  id="carouselEscuta" class="col-12 col-md-6 carousel slide mb-3" data-bs-ride="carousel">
-                        <div class="mb-2">
-                            <h4 class="mb-1">{{ $t('userVersion') }}</h4>
-                            <a class="small text-break" :href="escutaLink" target="_blank">{{ $t('seeOnGithub') }}</a>
-                        </div>
-                        <div class="carousel-inner-wrapper">
-                            <div class="carousel-inner">
-                                <div class="carousel-item" v-for="(image, index) in escuta" :key="index"
-                                    :class="{ active: index === 0 }">
-                                    <img :src="image.src" class="d-block w-100" :alt="'Image ' + (index + 1)" />
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselEscuta"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselEscuta"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div v-animate-on-scroll class="row justify-content-center align-items-center text-center my-4">
-                    <hr>
-                    <div class="col">
-                        <div class="row justify-content-center align-items-center text-center">
-                            <img class="madeWithIcon mx-2" title="Laravel" src="@/assets/laravel.png" alt="laravel">
-                            <img class="madeWithIcon mx-2" title="VueJs" src="@/assets/vuejs.png" alt="vueJs">
-                            <img class="madeWithIcon mx-2" title="MySql" src="@/assets/mysql.png" alt="mySql">
-                            <img class="madeWithIcon mx-2" title="Bootstrap" src="@/assets/bootstrap.png"
-                                alt="Bootstrap">
-                            <img class="madeWithIcon mx-2" title="Pusher" src="@/assets/pusher.png" alt="pusher">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div v-animate-on-scroll  class="col-12">
-                        <h3 class="cursor-pointer" @click="escutaDescription = !escutaDescription">
-                            {{ $t('Description') }}
-                            <i :class="escutaDescription ? 'fa fa-chevron-up' : 'fa fa-chevron-down'" class="ms-2"></i>
-                        </h3>
-                        <transition name="fade-slide">
-                            <p v-if="escutaDescription" class="text-center">{{ $t('escutaDescription') }}</p>
-                        </transition>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-top: 30px;" class="box col-12 col-md-7">
-                <div class="row justify-content-center align-items-center text-center">
-                    <div v-animate-on-scroll class="col-12">
-                        <div id="carouselMobile" class="col-12 carousel slide" data-bs-ride="carousel">
-                            <h3>ConectaBus</h3>
-                            <p class="project">{{ $t('conectaBusLittleDescription') }}</p>
-                            <div style="margin-bottom: 10px;">
-                                <a style="font-size: 12px; margin-right: 5px;" :href="ConectaBusLink" target="_blank">
-                                    {{ $t('seeOnGithub') }}
-                                </a>
-                                <a style="font-size: 12px;" :href="ConectaBusGooglePlay" target="_blank">
-                                    {{ $t('seeOnGooglePlay') }}
-                                </a>
-                            </div>
-                            <div class="carousel-inner-wrapper">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item" v-for="(image, index) in escutaMobile" :key="index"
-                                        :class="{ active: index === 0 }">
-                                        <img :src="image.src" class="d-block w-100" :alt="'Image ' + (index + 1)" />
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselMobile"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselMobile"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center align-items-center text-center" style="margin: 30px 0;">
-                    <hr>
-                    <div v-animate-on-scroll class="col">
-                        <div class="row justify-content-center align-items-center text-center">
-                            <img class="madeWithIcon" title="Flutter" src="@/assets/flutter.png" alt="Flutter">
-                            <img class="madeWithIcon" title="Dart" src="@/assets/dart.png" alt="Dart">
-                            <img class="madeWithIcon" title="MySql" src="@/assets/mysql.png" alt="MySql">
-                            <img class="madeWithIcon" title="Laravel" src="@/assets/laravel.png" alt="Laravel">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div v-animate-on-scroll class="col-12">
-                        <h3 style="cursor: pointer;" @click="conectaBusDescription = !conectaBusDescription">
-                            {{ $t('Description') }}
-                            <i :class="conectaBusDescription ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"
-                                style="margin-left: 8px;"></i>
-                        </h3>
-                        <transition name="fade-slide">
-                            <p v-if="conectaBusDescription" style="text-align: center;">
-                                {{ $t('conectaBusDescription') }}
-                            </p>
-                        </transition>
-                    </div>
-                </div>
-            </div>
-
-            <!-- --------------------------------  Usos ---------------------------------- -->
-            <div style="margin-top: 30px;" class="box col-12 col-md-7">
-                <div v-animate-on-scroll class="row justify-content-center align-items-center text-center">
-                    <div class="col-12">
-                        <div id="carouselUsos" class="col-12 carousel slide" data-bs-ride="carousel">
-                            <h3 >Usos Diários</h3>
-                            <p  class="project">{{ $t('usosLittleDescription') }}</p>
-                            <div style="margin-bottom: 10px;">
-                                <a style="font-size: 12px;" :href="UsosLink" target="_blank">{{ $t('seeOnGithub') }}</a>
-                            </div>
-                            <div class="carousel-inner-wrapper">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item" v-for="(image, index) in usos" :key="index"
-                                        :class="{ active: index === 0 }">
-                                        <img :src="image.src" class="d-block w-100" :alt="'Image ' + (index + 1)" />
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselUsos"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselUsos"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div v-animate-on-scroll class="row justify-content-center align-items-center text-center" style="margin: 30px 0;">
-                    <hr>
-                    <div class="col">
-                        <div class="row justify-content-center align-items-center text-center">
-                            <img class="madeWithIcon" title="VueJs" src="@/assets/vuejs.png" alt="VueJs">
-                            <img class="madeWithIcon" title="Bootstrap" src="@/assets/bootstrap.png" alt="Bootstrap">
-                            <img class="madeWithIcon" title="MySql" src="@/assets/mysql.png" alt="MySql">
-                            <img class="madeWithIcon" title="Laravel" src="@/assets/laravel.png" alt="Laravel">
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div v-animate-on-scroll class="col-12">
-                        <h3 style="cursor: pointer;" @click="usosDescription = !usosDescription">
-                            {{ $t('Description') }}
-                            <i :class="usosDescription ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"
-                                style="margin-left: 8px;"></i>
-                        </h3>
-                        <transition name="fade-slide">
-                            <p v-if="usosDescription" style="text-align: center;">
-                                {{ $t('usosDescription') }}
-                            </p>
-                        </transition>
-                    </div>
-                </div>
-            </div>
-            <a class="mt-3" v-animate-on-scroll href="https://github.com/diluan135/portfolio/" target="_blank">{{ $t('seeThisOnGithub')
-                }}</a>
+  <div  class="box2">
+    <!-- Layout Mobile: renderiza cada projeto sequencialmente -->
+    <div v-if="isMobile" class="projects-mobile">
+      <div v-for="(project, index) in projects" :key="index" class="project-item-mobile">
+        <div class="project-image-mobile">
+          <img :src="project.image" :alt="project.title" />
         </div>
+        <div class="project-details-mobile">
+          <h3>{{ project.title }}</h3>
+          <p style="text-align: start; margin-bottom: 20px;">{{ project.description }}</p>
+
+          <!-- Seção de functions -->
+          <div class="functions">
+            <div class="function-item" v-for="(fn, idx) in project.functions" :key="idx">
+              <span class="function-icon">-</span>
+              <span class="function-text">{{ fn }}</span>
+            </div>
+          </div>
+
+          <hr class="linha" />
+          <div class="row align-items-center">
+            <div class="tech-icons col-auto">
+              <img
+                v-for="(tech, idx) in project.techs"
+                :key="idx"
+                :src="tech.src"
+                :alt="tech.alt"
+                class="tech-icon"
+              />
+            </div>
+            <div data-clickable class="links col-auto">
+              <a v-for="(link, idx) in project.links" :key="idx" :href="link.url" target="_blank">
+                {{ link.text }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Layout Desktop -->
+    <div v-else>
+      <div class="projects-container">
+        <!-- Coluna da esquerda: imagens empilhadas verticalmente -->
+        <div class="left-column">
+          <div
+            class="project-image"
+            v-for="(project, index) in projects"
+            :key="index"
+            ref="projectRefs"
+            :class="{ visible: index === 0 }"
+          >
+            <img :src="project.image" :alt="project.title" />
+          </div>
+        </div>
+        <!-- Coluna da direita: fixa (sticky) com os detalhes do projeto atual -->
+        <div v-animate-on-scroll class="right-column">
+          <div style="padding-right: 30px;" class="indicator-column">
+            <div
+              v-for="(project, index) in projects"
+              :key="index"
+              :class="['indicator-dot', { active: currentProjectIndex === index }]"
+            ></div>
+          </div>
+          <transition name="fade" mode="out-in" appear>
+            <div class="sticky-info" v-if="currentProject" :key="currentProject.title">
+              <h3>{{ currentProject.title }}</h3>
+              <p style="text-align: start;">{{ currentProject.description }}</p>
+
+              <!-- Seção de functions -->
+              <div class="functions">
+                <div class="function-item" v-for="(fn, idx) in currentProject.functions" :key="idx">
+                  <span class="function-text">{{ fn }}</span>
+                </div>
+              </div>
+
+              <hr class="linha" style="width: 70%;" />
+              <div class="row align-items-center">
+                <div class="tech-icons col-auto">
+                  <img
+                    v-for="(tech, idx) in currentProject.techs"
+                    :key="idx"
+                    :src="tech.src"
+                    :alt="tech.alt"
+                    class="tech-icon"
+                  />
+                </div>
+                <div data-clickable class="links col-auto">
+                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank">
+                    {{ link.text }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </transition>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
-
-
-<style scoped>
-.projects-container {
-    padding: 20px;
-}
-
-.projects-title {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-}
-
-.project-box {
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.project-description {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-.carousel-container {
-    display: grid;
-    gap: 10px;
-}
-
-.carousel-wrapper {
-    margin-bottom: 20px;
-}
-
-.tech-icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
-}
-
-.tech-icon {
-    width: 40px;
-    height: 40px;
-}
-
-.description-container {
-    text-align: center;
-}
-
-.description-title {
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    .project-box {
-        padding: 15px;
-    }
-
-    .tech-icons {
-        flex-wrap: wrap;
-    }
-}
-</style>
 
 
 <script>
 export default {
-    data() {
-        return {
-            UsosLink: 'https://github.com/diluan135/usos',
-            usosDescription: false,
-            ConectaBusGooglePlay: 'https://play.google.com/store/apps/details?id=amttdetra.horarios_transporte&hl=pt_BR',
-            ConectaBusLink: 'https://github.com/diluan135/conecta_bus',
-            conectaBusDescription: false,
-            escutaLink: 'https://github.com/diluan135/escuta_public',
-            escutaAdminLink: 'https://github.com/diluan135/escuta_admin_public',
-            escutaDescription: false,
-            escuta: [
-                { src: require('@/assets/escuta/1.png') },
-                { src: require('@/assets/escuta/2.png') },
-                { src: require('@/assets/escuta/3.png') },
-                { src: require('@/assets/escuta/4.png') },
-                { src: require('@/assets/escuta/5.png') },
-                { src: require('@/assets/escuta/6.png') },
-                { src: require('@/assets/escuta/7.png') },
-            ],
-            escutaAdmin: [
-                { src: require('@/assets/escuta_admin/1.png') },
-                { src: require('@/assets/escuta_admin/2.png') },
-                { src: require('@/assets/escuta_admin/3.png') },
-                { src: require('@/assets/escuta_admin/4.png') },
-            ],
-            escutaMobile: [
-                { src: require('@/assets/escuta_mobile/8.jpeg') },
-                { src: require('@/assets/escuta_mobile/9.jpeg') },
-                { src: require('@/assets/escuta_mobile/1.png') },
-                { src: require('@/assets/escuta_mobile/2.png') },
-                { src: require('@/assets/escuta_mobile/3.png') },
-                { src: require('@/assets/escuta_mobile/4.png') },
-                { src: require('@/assets/escuta_mobile/5.png') },
-                { src: require('@/assets/escuta_mobile/6.png') },
-                { src: require('@/assets/escuta_mobile/7.png') },
-            ],
-            usos: [
-                { src: require('@/assets/usos/1.png') },
-                { src: require('@/assets/usos/2.png') },
-                { src: require('@/assets/usos/3.png') },
-                { src: require('@/assets/usos/4.png') },
-                { src: require('@/assets/usos/5.png') },
-            ],
-        };
+  name: "ProjectsComponent",
+  data() {
+    return {
+      isMobile: false,
+      projects: [
+        {
+          title: "Escuta",
+          image: require("@/assets/escuta/1.png"),
+          description: this.$t("escutaDescription"),
+          functions: [
+            this.$t("escutaFunction3"),
+            this.$t("escutaFunction"),
+            this.$t("escutaFunction2"),
+            this.$t("escutaFunction4"),
+            this.$t("escutaFunction5"),
+          ],
+          links: [
+            {
+              text: this.$t("seeOnGithub"),
+              url: "https://github.com/diluan135/escuta_public",
+            },
+          ],
+          techs: [
+            { src: require("@/assets/laravel.png"), alt: "Laravel" },
+            { src: require("@/assets/vuejs.png"), alt: "VueJs" },
+            { src: require("@/assets/mysql.png"), alt: "MySql" },
+            { src: require("@/assets/bootstrap.png"), alt: "Bootstrap" },
+            { src: require("@/assets/pusher.png"), alt: "Pusher" },
+          ],
+        },
+        {
+          title: "Escuta Admin",
+          image: require("@/assets/escuta_admin/1.png"),
+          description: this.$t("escutaAdminDescription"),
+          functions: [
+            this.$t("escutaAdminFunction"),
+            this.$t("escutaAdminFunction3"),
+            this.$t("escutaAdminFunction4"),
+            this.$t("escutaAdminFunction2"),
+          ],
+          links: [
+            {
+              text: this.$t("seeOnGithub"),
+              url: "https://github.com/diluan135/escuta_admin_public",
+            },
+          ],
+          techs: [
+            { src: require("@/assets/laravel.png"), alt: "Laravel" },
+            { src: require("@/assets/vuejs.png"), alt: "VueJs" },
+            { src: require("@/assets/mysql.png"), alt: "MySql" },
+            { src: require("@/assets/bootstrap.png"), alt: "Bootstrap" },
+            { src: require("@/assets/pusher.png"), alt: "Pusher" },
+          ],
+        },
+        {
+          title: "ConectaBus",
+          image: require("@/assets/conectaBus/1.png"),
+          description: this.$t("conectaBusDescription"),
+          functions: [
+            this.$t("conectaBusFunction2"),
+            this.$t("conectaBusFunction3"),
+            this.$t("conectaBusFunction4"),
+            this.$t("conectaBusFunction"),
+          ],
+          links: [
+            {
+              text: this.$t("seeOnGithub"),
+              url: "https://github.com/diluan135/conecta_bus",
+            },
+            {
+              text: this.$t("seeOnGooglePlay"),
+              url: "https://play.google.com/store/apps/details?id=amttdetra.horarios_transporte&hl=pt_BR",
+            },
+          ],
+          techs: [
+            { src: require("@/assets/flutter.png"), alt: "Flutter" },
+            { src: require("@/assets/dart.png"), alt: "Dart" },
+            { src: require("@/assets/mysql.png"), alt: "MySql" },
+            { src: require("@/assets/laravel.png"), alt: "Laravel" },
+          ],
+        },
+        {
+          title: "Usos Diários",
+          image: require("@/assets/usos/1.png"),
+          description: this.$t("usosDescription"),
+          functions: [
+            this.$t("usosFunction"),
+            this.$t("usosFunction2"),
+            this.$t("usosFunction3"),
+          ],
+          links: [
+            {
+              text: this.$t("seeOnGithub"),
+              url: "https://github.com/diluan135/usos",
+            },
+          ],
+          techs: [
+            { src: require("@/assets/vuejs.png"), alt: "VueJs" },
+            { src: require("@/assets/bootstrap.png"), alt: "Bootstrap" },
+            { src: require("@/assets/mysql.png"), alt: "MySql" },
+            { src: require("@/assets/laravel.png"), alt: "Laravel" },
+          ],
+        },
+      ],
+      currentProject: null,
+      observer: null,
+    };
+  },
+  computed: {
+    currentProjectIndex() {
+      return this.projects.indexOf(this.currentProject);
     },
+  },
+  mounted() {
+    this.checkMobile();
+    window.addEventListener("resize", this.checkMobile);
+    if (!this.isMobile) {
+      this.currentProject = this.projects[0];
+      const options = { threshold: 0.7 };
+      const callback = (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            const index = this.$refs.projectRefs.indexOf(entry.target);
+            if (index !== -1) {
+              this.currentProject = this.projects[index];
+            }
+          } else {
+            entry.target.classList.remove("visible");
+          }
+        });
+      };
+      this.observer = new IntersectionObserver(callback, options);
+      this.$nextTick(() => {
+        this.$refs.projectRefs.forEach((el) => {
+          this.observer.observe(el);
+        });
+      });
+    }
+    // Define o projeto atual inicialmente como o primeiro
+    this.currentProject = this.projects[0];
+
+    // Define o IntersectionObserver com root sendo o body (ou o container principal)
+    const options = { threshold: 0.7 };
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          const index = this.$refs.projectRefs.indexOf(entry.target);
+          if (index !== -1) {
+            this.currentProject = this.projects[index];
+          }
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    };
+    this.observer = new IntersectionObserver(callback, options);
+    this.$nextTick(() => {
+      this.$refs.projectRefs.forEach((el) => {
+        this.observer.observe(el);
+      });
+    });
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.checkMobile);
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  },
+  methods: {
+    checkMobile() {
+      this.isMobile = window.innerWidth < 768;
+    },
+  },
 };
 </script>
+<style scoped>
+/* Layout Desktop */
+.projects-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.left-column {
+  width: 50%;
+}
+
+.right-column {
+  width: 50%;
+  position: sticky;
+  top: 25vh;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.project-image {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.project-image.visible {
+  opacity: 1;
+}
+
+.project-image img {
+  max-width: 90%;
+  max-height: 70vh;
+  object-fit: cover;
+}
+
+.sticky-info {
+  text-align: start;
+}
+
+.links {
+  margin: 10px 0;
+}
+
+.links a {
+  margin: 0 5px;
+  color: #007bff;
+}
+
+.tech-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.tech-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* Coluna de indicadores */
+.indicator-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 0.5em;
+}
+
+.indicator-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #2275ff;
+  margin: 5px 0;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform: scale(1);
+  filter: blur(1px);
+}
+
+.indicator-dot.active {
+  transform: scale(5);
+  filter: blur(0.5px);
+}
+
+.linha {
+  border: 1px solid #2275ff;
+}
+
+/* Seção de functions */
+.functions {
+  margin: -10px 0 10px;
+}
+
+.function-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: rgb(124, 124, 124);
+  margin-bottom: 5px;
+}
+
+.function-icon {
+  color: #2275ff;
+  margin-right: 5px;
+}
+
+/* Dark mode */
+.dark-mode .right-column {
+  color: #fff;
+}
+
+.dark-mode .indicator-dot {
+  background-color: #2fcbd5;
+}
+
+.dark-mode .linha {
+  border: 1px solid #2fcbd5;
+}
+
+.dark-mode .function-icon {
+  color: #2fcbd5;
+}
+
+/* Layout Mobile */
+.projects-mobile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+}
+
+.project-item-mobile {
+  margin-bottom: 30px;
+}
+
+.project-image-mobile {
+  text-align: center;
+}
+
+.project-image-mobile img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.project-details-mobile {
+  padding: 10px;
+  text-align: start;
+}
+
+.project-details-mobile h3 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+.project-details-mobile p {
+  margin: 10px 0;
+}
+
+/* Ajuste dos indicadores e functions também podem ser aplicados no mobile se necessário */
+</style>

@@ -1,83 +1,116 @@
 <template>
-  <div>
-    <!-- Header Section -->
-    <!-- <h1 v-animate-on-scroll :key="$i18n.locale" class="text-center">{{ $t('welcome') }}</h1>  -->
-    <div v-animate-on-scroll class="animated-text text-center" :style="{ color: isDarkMode ? '#2fcbd5' : '#2275ff' }">
-      <span>{{ currentWord }}</span>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-auto">
-        <p v-animate-on-scroll :key="$i18n.locale" class="text-center custom-line">
-          {{ $t('description') }}
-        </p>
-      </div>
-    </div>
-
-    <!-- Skills Section -->
-    <div class="row justify-content-center align-items-center text-center mt-4">
-      <div v-animate-on-scroll class="box col-12 col-md-7">
-        <h3>{{ $t('skills') }}</h3>
-        <div class="skills-chart d-flex justify-content-center">
-          <!-- Usando v-if para destruir e recriar o gráfico sempre que isDarkMode mudar -->
-          <BarChart v-if="barra == 0" :data="chartData" :options="chartOptions" />
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Header Section -->
+      <!-- <h1 v-animate-on-scroll :key="$i18n.locale" class="text-center">{{ $t('welcome') }}</h1>  -->
+      <div class="col-12 col-md-7">
+        <div class="animated-text text-start mt-5 mb-3" :style="{ color: isDarkMode ? '#2fcbd5' : '#2275ff' }">
+          <span>{{ currentWord }}</span>
         </div>
-      </div>
-    </div>
 
-    <!-- Soft Skills Section -->
-    <div class="row justify-content-center align-items-center text-center">
-      <div class="boxSkills col-12 col-md-7">
-        <div v-animate-on-scroll>
-          <h3 :key="$i18n.locale" style="padding-top: 10px;" data-clickable @click="softSkills = !softSkills">
-            {{ softSkills ? $t('principal softskills') : $t('see softskills') }}
-            <i :class="softSkills ? 'fa fa-chevron-up' : 'fa fa-chevron-down'" style="margin-left: 8px;"></i>
-          </h3>
+          <div class="col-auto">
+            <p v-animate-on-scroll :key="$i18n.locale" style="margin-bottom: 6px;" class="text-start ">
+              {{ $t('description') }}
+            </p>
+            <div class="custom-text-sequence">
+              <p v-animate-on-scroll :key="$i18n.locale">
+                {{ $t("it's about designing") }}
+              </p>
+              <p v-animate-on-scroll :key="$i18n.locale"
+                :style="{ color: isDarkMode ? '#2fcbd5' : '#2275ff', fontWeight: 'bold' }">
+                {{ $t('visual experiences') }}
+              </p>
+              <p v-animate-on-scroll :key="$i18n.locale">
+                {{ $t('that tell stories') }}
+              </p>
+            </div>
+          </div>
 
-          <transition name="fade-slide">
-            <div v-if="softSkills" class="row" style="margin-top:20px;">
-              <div class="col-6 col-md-3 text-center tooltip-container"
-                :title="$t('emotional inteligence description')">
-                <img :src="isDarkMode ? require('@/assets/emotionalBlack.png') : require('@/assets/emotional.png')"
-                  alt="Emotional Intelligence" class="softIcon" />
-                <p>{{ $t('emocional inteligence') }}</p>
-                <div class="tooltip">{{ $t('emotional inteligence description') }}</div>
-              </div>
 
-              <div class="col-6 col-md-3 text-center tooltip-container" :title="$t('communication description')">
-                <img
-                  :src="isDarkMode ? require('@/assets/communicationBlack.png') : require('@/assets/communication.png')"
-                  alt="Communication" class="softIcon" />
-                <p>{{ $t('communication') }}</p>
-                <div class="tooltip">{{ $t('communication description') }}</div>
-              </div>
-
-              <div class="col-6 col-md-3 text-center tooltip-container" :title="$t('teamwork description')">
-                <img :src="isDarkMode ? require('@/assets/teamworkBlack.png') : require('@/assets/teamwork.png')"
-                  alt="Teamwork" class="softIcon" />
-                <p>{{ $t('teamwork') }}</p>
-                <div class="tooltip">{{ $t('teamwork description') }}</div>
-              </div>
-
-              <div class="col-6 col-md-3 text-center tooltip-container" :title="$t('pressure description')">
-                <img :src="isDarkMode ? require('@/assets/pressureBlack.png') : require('@/assets/pressure.png')"
-                  alt="Pressure" class="softIcon" />
-                <p>{{ $t('pressure') }}</p>
-                <div class="tooltip">{{ $t('pressure description') }}</div>
+        <!-- Skills Section -->
+        <div v-animate-on-scroll class="row justify-content-start align-items-start text-start mt-5">
+          <div class="col-12 box3">
+            <div class="box3 pt-5" style="margin-right: -3vw;">
+              <h3 style="font-size: 2em;">{{ $t('skills') }}</h3>
+              <div class="skills-chart d-flex justify-content-start">
+                <!-- Usando v-if para destruir e recriar o gráfico sempre que isDarkMode mudar -->
+                <BarChart v-if="barra == 0" :data="chartData" :options="chartOptions" />
               </div>
             </div>
-          </transition>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- About Section -->
-    <div class="row justify-content-center align-items-center text-center">
-      <div class="box col-12 col-md-7">
-        <h3 v-animate-on-scroll :key="$i18n.locale">{{ $t('about') }}</h3>
-        <p v-animate-on-scroll :key="$i18n.locale">{{ $t('actually') }}</p>
-        <p v-animate-on-scroll :key="$i18n.locale">{{ $t('aboutMe') }}</p>
+
+      <div v-animate-on-scroll style="margin-left:5vw;" class="col-12 col-md-4">
+
+
+        <!-- Soft Skills Section -->
+        <div class="row justify-content-center align-items-center text-center" style="margin-top: 15vh;">
+          <div class="boxSkills col-md-12">
+            <div>
+              <h3 :key="$i18n.locale" style="padding-top: 10px;" data-clickable @click="softSkills = !softSkills">
+                {{ softSkills ? $t('principal softskills') : $t('see softskills') }}
+                <i :class="softSkills ? 'fa fa-chevron-up' : 'fa fa-chevron-down'" style="margin-left: 8px;"></i>
+              </h3>
+              <transition name="fade-slide" mode="out-in">
+                <div v-if="softSkills" class="row" style="margin-top:20px;">
+                  <div class="col-6 col-md-6 text-center tooltip-container"
+                    :title="$t('emotional iteligence description')">
+                    <img :src="isDarkMode ? require('@/assets/emotionalBlack.png') : require('@/assets/emotional.png')"
+                      alt="Emotional Intelligence" class="softIcon" />
+                    <p>{{ $t('emocional inteligence') }}</p>
+                    <div class="tooltip">{{ $t('emotional inteligence description') }}</div>
+                  </div>
+                  <div class="col-6 col-md-6 text-center tooltip-container" :title="$t('communication description')">
+                    <img
+                      :src="isDarkMode ? require('@/assets/communicationBlack.png') : require('@/assets/communication.png')"
+                      alt="Communication" class="softIcon" />
+                    <p>{{ $t('communication') }}</p>
+                    <div class="tooltip">{{ $t('communication description') }}</div>
+                  </div>
+                  <div class="col-6 col-md-6 text-center tooltip-container" :title="$t('teamwork description')">
+                    <img :src="isDarkMode ? require('@/assets/teamworkBlack.png') : require('@/assets/teamwork.png')"
+                      alt="Teamwork" class="softIcon" />
+                    <p>{{ $t('teamwork') }}</p>
+                    <div class="tooltip">{{ $t('teamwork description') }}</div>
+                  </div>
+                  <div class="col-6 col-md-6 text-center tooltip-container" :title="$t('pressure description')">
+                    <img :src="isDarkMode ? require('@/assets/pressureBlack.png') : require('@/assets/pressure.png')"
+                      alt="Pressure" class="softIcon" />
+                    <p>{{ $t('pressure') }}</p>
+                    <div class="tooltip">{{ $t('pressure description') }}</div>
+                  </div>
+                </div>
+              </transition>
+            </div>
+          </div>
+        </div>
+        <!-- About Section -->
+        <div class="row justify-content-center align-items-center text-center">
+          <div class="boxSkills col-md-12">
+            <h3 :key="$i18n.locale" style="padding-top: 10px;" data-clickable @click="showAbout = !showAbout">
+              {{ $t('about') }}
+              <i :class="showAbout ? 'fa fa-chevron-up' : 'fa fa-chevron-down'" style="margin-left: 8px;"></i>
+            </h3>
+            <transition name="fade-slide" mode="out-in">
+
+              <div v-if="showAbout" class="row" style="margin-top:20px;">
+
+                <div class="col-12">
+                  <p :key="$i18n.locale">{{ $t('myName') }}</p>
+                  <p :key="$i18n.locale">{{ $t('actually') }}</p>
+                  <p :key="$i18n.locale">{{ $t('aboutMe') }}</p>
+                </div>
+              </div>
+            </transition>
+          </div>
+          <div class="col-6 mt-4">
+            <a data-clickable class="mt-3 botaoDownload" :href="curriculoLink" download>{{
+              $t('downloadResume') }}</a>
+          </div>
+        </div>
       </div>
-      <a v-animate-on-scroll class="mt-3" :href="curriculoLink" download>{{ $t('downloadResume') }}</a>
     </div>
   </div>
 </template>
@@ -105,6 +138,7 @@ export default {
   },
   data() {
     return {
+      showAbout: false,
       softSkills: false,
       branco: 'rgb(34, 133, 255)',
       brancoEscuro: 'rgba(34, 133, 255, 0.5)',
@@ -174,7 +208,13 @@ export default {
     }
   },
   methods: {
-    animateText() {
+    handleIntersection(entry) {
+      if (entry.isIntersecting) {
+        console.log('Elemento entrou na viewport')
+      } else {
+        console.log('Elemento saiu da viewport')
+      }
+    }, animateText() {
       const typeEffect = () => {
         const word = this.words[this.currentIndex];
 
@@ -240,6 +280,12 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 768px) {
+  .col-md-4 {
+    margin-left: 0 !important;
+  }
+}
+
 .animated-text {
   font-size: 3em;
   font-weight: bold;
@@ -249,6 +295,18 @@ export default {
   /* Centraliza o texto */
   width: 100%;
   /* Garante que ocupe toda a largura do contêiner */
+  line-height: 1;
+  /* Reduz o espaço entre as linhas */
+
+}
+
+@media (max-width: 768px) {
+
+  /* Ajuste para dispositivos pequenos */
+  .animated-text {
+    min-height: 2.5em;
+    /* Espaço maior para garantir duas linhas */
+  }
 }
 
 .animated-text span {

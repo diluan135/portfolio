@@ -1,6 +1,28 @@
 /* White:: rgb(34, 133, 255) #2275ff               || Black::         rgb(47, 203, 205) #2fcbd5 */
 
 /*-------------------------------------------------------------------------------------------------*/
+/*                                          FOOTER VIEW                                            */
+/*-------------------------------------------------------------------------------------------------*/
+
+.footer {
+    background-color: rgb(248, 248, 248);
+    color: rgb(130, 130, 130);
+    text-align: center;
+    font-size: 13px;
+    padding: 20px 0px;
+    opacity: 1;
+    z-index: 10000;
+}
+
+.dark-mode .footer {
+    background-color: rgb(27, 27, 27);
+    color: white;
+    text-align: center;
+    font-size: 13px;
+    z-index: 10000;
+}
+
+/*-------------------------------------------------------------------------------------------------*/
 /*                                          SERIVCES VIEW                                          */
 /*-------------------------------------------------------------------------------------------------*/
 
@@ -198,17 +220,38 @@
 /*                                               ABOUT ME                                      */
 /*-------------------------------------------------------------------------------------------------*/
 
+.custom-text-sequence {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    /* Espaço entre os textos */
+    width: 100%;
+    /* Removemos qualquer fundo ou decoração que estivesse causando o espaço branco */
+    line-height: 1;
+}
 
-.custom-line::after {
-    content: "";
-    display: block;
-    width: 70%;
-    height: 2px;
-    background-color: #2b2b2b; /* Cor da linha */
-    position: absolute;
-    left: 0; /* Começa do início do texto */
-    bottom: -5px; /* Ajuste para alinhar abaixo do texto */
-  }
+.custom-text-sequence p {
+    margin: 0;
+    white-space: nowrap;
+    /* Impede quebra dentro de cada parágrafo */
+}
+
+@media (max-width: 768px) {
+    .custom-text-sequence {
+        flex-wrap: wrap;
+        /* Permite que os textos quebrem em linhas quando necessário */
+    }
+
+    .custom-text-sequence p {
+        white-space: normal;
+        /* Em telas pequenas, permita que o texto quebre se precisar */
+    }
+}
+
+
+.dark-mode .custom-line::after {
+    background-color: #fff;
+}
 
 .softIcon {
     width: 60px;
@@ -234,7 +277,7 @@
     opacity: 0;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.75);
-    color: #fff;
+    color: #f6f6f6;
     text-align: center;
     border-radius: 5px;
     padding: 5px;
@@ -276,20 +319,106 @@
     transition: 0.3s;
 }
 
-.boxSkills {
+.box2 {
+    position: relative;
+    max-width: auto;
     background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 0px;
+    /* margin: 20px; */
+    box-shadow: 0 2vh 10vh rgba(96, 96, 96, 0.2);
+    transition: 0.3s;
+}
+
+.box2 .box {
+    background-color: transparent;
+    border: 2px solid #2275ff;
+    /* Define a borda */
+    border-radius: 20px;
+    /* Arredonda as bordas */
+    z-index: 9998;
+}
+
+.dark-mode .box2 {
+    max-width: auto;
+    background-color: rgb(17, 17, 17);
+    padding: 20px;
+    border-radius: 0px;
+    /* margin: 20px; */
+    box-shadow: 0 1vh 10vh rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+}
+
+.dark-mode .box2 .box {
+    background-color: transparent;
+    border: 2px solid #2fcbd5;
+    /* Define a borda */
+    border-radius: 20px;
+    /* Arredonda as bordas */
+    box-shadow: 10px 5px 10px rgba(47, 203, 205, 0.2);
+
+}
+
+.box3 {
+    position: relative;
+    z-index: 0;
+    /* Cria um contexto de empilhamento */
+    background-color: transparent;
+    border: none;
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+/* Linha superior relativa à caixa */
+.box3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50vw;
+    /* Estende para a esquerda */
+    width: calc(50vw + 100%);
+    height: 2px;
+    background-color: #2275ff;
+    z-index: -1;
+    /* Coloca atrás da .box3 */
+}
+
+/* Linha direita relativa à caixa */
+.box3::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -2px;
+    width: 2px;
+    height: calc(100% + 100vh);
+    background-color: #2275ff;
+    z-index: -1;
+    /* Coloca atrás da .box3 */
+}
+
+.dark-mode .box3::before,
+.dark-mode .box3::after {
+    background-color: #2fcbd5;
+}
+
+.boxSkills {
+    background-color: rgba(255, 255, 255, 1);
     padding: 20px;
     border-radius: 10px;
     margin: 10px;
     box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.2);
     transition: 0.3s;
+    z-index: 9998;
+
 }
 
 .dark-mode .box,
 .dark-mode .boxSkills {
-    background-color: #121212;
+    background-color: rgb(14, 14, 14);
     transition: 0.3s;
 }
+
 
 .box p {
     text-align: justify;
@@ -465,34 +594,68 @@ html {
     /* Remove a barra de rolagem horizontal */
 }
 
-
 .background {
     top: 0;
     left: 0;
     max-width: 100vw;
     height: 100%;
     min-height: 100vh;
-    /* Ocupa toda a tela */
-    background-image: url('backgroundWhite.jpg');
-    background-color: #dedede;
-    /* Define uma cor de fundo */
+    background-image: none;
+    background-color: transparent;
     background-size: cover;
-    /* Ajusta o tamanho da imagem */
     background-position: center;
-    /* Centraliza a imagem */
     background-attachment: fixed;
-    /* Garante que a imagem fique fixa */
     z-index: -1;
-    /* Coloca o fundo atrás do conteúdo */
     transition: 0.3s;
 }
 
 .background.dark-mode {
-    background-image: url('backgroundBlack.jpg');
-    background-color: #242424;
+    background-image: none;
+    background-color: transparent;
+    /* Fundo preto */
     transition: 0.3s;
 }
 
+#dark-mode-canvas {
+    position: fixed;
+    /* Mantém o canvas fixo no fundo */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* Ocupa toda a largura */
+    height: 100vh;
+    /* Ocupa toda a altura */
+    z-index: -1;
+    /* Garante que o canvas fique atrás dos outros elementos */
+}
+
+.botaoDownload {
+    padding: 14.5px 15px 15px 15px;
+    background-color: rgb(34, 133, 255);
+    cursor: none !important;
+    border-radius: 10px;
+    border: none;
+    /* Remove a borda */
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    color: #fff;
+}
+
+.dark-mode .botaoDownload {
+    background-color: rgb(47, 203, 205);
+    border: none;
+    /* Remove a borda também no dark mode */
+}
+
+.botaoDownload:hover {
+    background-color: rgb(28, 112, 220);
+    /* Exemplo: tom um pouco mais escuro */
+}
+
+.dark-mode .botaoDownload:hover {
+    background-color: rgb(40, 180, 190);
+    /* Ajuste conforme o efeito desejado no dark mode */
+}
 
 .botao {
     margin: 0px;
@@ -589,49 +752,24 @@ h3 {
 }
 
 .fade-enter,
-.fade-leave-to
-
-/* .fade-leave-active em versões do Vue 2.1.8+ */
-    {
+.fade-leave-to {
     opacity: 0;
     transform: translateY(20px);
 }
 
+/* Estado inicial: elemento escondido */
 .text-reveal {
     opacity: 0;
-    transform: translateY(20px);
-    animation: slideUp 1s forwards;
-}
-
-@keyframes slideUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.text-reveal {
+    transform: translateY(30px);
+    transition: opacity 1.5s ease, transform 1s ease;
+  }
+  
+  /* Estado ativo: elemento visível */
+  .text-reveal.active {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-
-.text-reveal-hidden {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-/* Aplique o delay da animação para dar um efeito suave */
-.text-reveal-hidden {
-    opacity: 0;
-    transform: translateY(30px);
-}
-
+  }
+  
 .fade-slide-enter-active,
 .fade-slide-leave-active {
     transition: all 0.3s ease;
@@ -711,7 +849,7 @@ button {
 
 /* Efeito para elementos clicáveis */
 .custom-cursor.clickable {
-    background-color:#ffffff;
+    background-color: #ffffff;
     /* Remove o círculo de fundo */
     filter: none;
     /* Remove o blur */
@@ -727,7 +865,7 @@ body.dark-mode .cursor-ghost {
 }
 
 body.dark-mode .custom-cursor.clickable {
-    background-color:#ffffff;
+    background-color: #ffffff;
     /* Remove o círculo de fundo */
     filter: none;
     /* Remove o blur */

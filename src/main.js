@@ -12,23 +12,26 @@ const app = createApp(App);
 
 app.directive('animate-on-scroll', {
   mounted(el) {
-    // Inicialmente, esconda o elemento
-    el.classList.add('text-reveal-hidden');
+    // Adiciona a classe base para aplicar as transições
+    el.classList.add('text-reveal');
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Ativa a animação ao aparecer na tela
-          el.classList.remove('text-reveal-hidden');
-          el.classList.add('text-reveal');
-          observer.unobserve(el); // Desconecta o observador após a animação
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
         }
       },
-      { threshold: 0.5 } // 50% do elemento precisa ser visível para disparar a animação
+      {
+        threshold: 0.3, // O elemento começa a aparecer quando 30% dele entra na tela
+        rootMargin: "0px 0px -20%" // O elemento some 20% antes de sair completamente
+      }
     );
     observer.observe(el);
   }
 });
+
 
 // Importa os arquivos de idioma
 import en from './locales/en.json';

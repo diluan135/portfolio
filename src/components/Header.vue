@@ -1,29 +1,34 @@
 <template>
     <div class="d-flex header align-items-center">
-        <div class="col-10 d-flex align-items-center">
-            <button class="botao" :class="{ active: currentView === 'AboutMe' }" @click="changeView('AboutMe')">
+        <div v-if="!isMobile" class="col-10 d-flex align-items-center">
+            <button class="botao" :class="{ active: activeSection === 'about-me' }"
+                @click="scrollToSection('about-me')">
                 <p :key="$i18n.locale">{{ $t('about') }}</p>
             </button>
+
             <div class="vertical-divider"></div>
-            <button class="botao" :class="{ active: currentView === 'Projects' }" @click="changeView('Projects')">
+
+            <button class="botao" :class="{ active: activeSection === 'projects' }"
+                @click="scrollToSection('projects')">
                 <p :key="$i18n.locale">{{ $t('projects') }}</p>
             </button>
+
             <div class="vertical-divider"></div>
-            <button class="botao" :class="{ active: currentView === 'Services' }" @click="changeView('Services')">
+
+            <button class="botao" :class="{ active: activeSection === 'services' }"
+                @click="scrollToSection('services')">
                 <p :key="$i18n.locale">{{ $t('services') }}</p>
             </button>
+
             <div class="vertical-divider"></div>
-            <button class="botao" :class="{ active: currentView === 'HireMe' }" @click="changeView('HireMe')">
-                <p :key="$i18n.locale">{{ $t('HireMe') }}</p>
+
+            <button class="botao" :class="{ active: activeSection === 'hire-me' }" @click="scrollToSection('hire-me')">
+                <p :key="$i18n.locale">{{ $t('hireMe') }}</p>
             </button>
-            <button v-if="showCertificates" class="botao" :class="{ active: currentView === 'Certificates' }"
-                @click="changeView('Certificates')">
-                <p :key="$i18n.locale">{{ $t('certificates') }}</p>
-            </button>
-            <!-- <div class="vertical-divider"></div> -->
         </div>
         <div v-if="!isMobile" data-clickable class="col-1 ms-auto">
-            <input type="checkbox" id="darkmode-toggle" style="cursor: none !important;" :checked="isDarkMode" @change="emitDarkMode" />
+            <input type="checkbox" id="darkmode-toggle" style="cursor: none !important;" :checked="isDarkMode"
+                @change="emitDarkMode" />
             <label for="darkmode-toggle" class="darkmode-toggle-label">
                 <svg class="moon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -54,11 +59,12 @@
                 </svg>
             </label>
         </div>
-        <div class="col-1">
+        <div class="col-1 d-flex flex-column d-md-block mt-auto mt-md-0 px-4 px-md-0">
             <div @click="toggleLanguage" class="language-toggle">
-                <img data-clickable v-if="$i18n.locale === 'en'" src="../assets/usa_flag.png" alt="English" class="language-icon" />
+                <img data-clickable v-if="$i18n.locale === 'en'" src="../assets/usa_flag.png" alt="English"
+                    class="language-icon" />
                 <img data-clickable v-else src="../assets/br_flag.png" alt="Português" class="language-icon" />
-                <p>{{ $t('language') }}</p>
+                <p>{{ $t('language') }} <i class='fa fa-chevron-down'></i></p>
             </div>
         </div>
     </div>
@@ -79,9 +85,13 @@ export default {
             type: Boolean,
             default: true,
         },
+        ["currentSection"]: String
     },
     computed: {
         ...mapState(['currentView']),
+        activeSection() {
+            return this.currentSection;
+        },
     },
     methods: {
         ...mapMutations(['setCurrentView']),
@@ -98,15 +108,42 @@ export default {
         emitDarkMode(event) {
             this.$emit('toggle-dark-mode', event.target.checked);
         },
-        changeView(view) {
-            this.setCurrentView(view);
+        scrollToSection(sectionId) {
+            this.$emit("scroll-to-section", sectionId);
         },
+        checkCurrentSection() {
+            const sections = ["about-me", "projects", "services", "hire-me"];
+            let current = "about-me";
+
+            sections.forEach((id) => {
+                const section = document.getElementById(id);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3) {
+                        current = id;
+                    }
+                }
+            });
+
+            this.$emit("update-section", current); // ✅ Emite evento para o App.vue
+        }
+
     },
     mounted() {
         window.addEventListener("resize", this.updateIsMobile);
+        window.addEventListener("scroll", this.checkCurrentSection);
     },
     beforeUnmounted() {
         window.removeEventListener("resize", this.updateIsMobile);
+        window.removeEventListener("scroll", this.checkCurrentSection);
     },
 };
 </script>
+
+<style>
+.language-toggle p {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaçamento entre o texto e o ícone */
+}
+</style>
