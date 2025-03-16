@@ -24,44 +24,25 @@
             <div class="tech-icons col-auto">
               <img v-for="(tech, idx) in project.techs" :key="idx" :src="tech.src" :alt="tech.alt" class="tech-icon" />
             </div>
+            <!-- Renderiza os links verticalmente se o título for "Articles" ou "Artigos" -->
             <div data-clickable class="links col-auto"
-                  v-if="currentProject.title === 'Articles' || currentProject.title === 'Artigos'">
-                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank"
-                    style="display: block; margin-bottom: 5px;">
-                    {{ link.text }}
-                  </a>
-                </div>
-                <div data-clickable class="links col-auto" v-else>
-                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank">
-                    {{ link.text }}
-                  </a>
-                </div> <div data-clickable class="links col-auto"
-                  v-if="currentProject.title === 'Articles' || currentProject.title === 'Artigos'">
-                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank"
-                    style="display: block; margin-bottom: 5px;">
-                    {{ link.text }}
-                  </a>
-                </div>
-                <div data-clickable class="links col-auto" v-else>
-                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank">
-                    {{ link.text }}
-                  </a>
-                </div> <div data-clickable class="links col-auto"
-                  v-if="currentProject.title === 'Articles' || currentProject.title === 'Artigos'">
-                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank"
-                    style="display: block; margin-bottom: 5px;">
-                    {{ link.text }}
-                  </a>
-                </div>
-                <div data-clickable class="links col-auto" v-else>
-                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank">
-                    {{ link.text }}
-                  </a>
-                </div>
+              v-if="project.title === 'Articles' || project.title === 'Artigos'">
+              <a v-for="(link, idx) in project.links" :key="idx" :href="link.url" target="_blank"
+                style="display: block; margin-bottom: 5px;">
+                {{ link.text }}
+              </a>
+            </div>
+            <!-- Caso contrário, renderiza os links no layout padrão -->
+            <div data-clickable class="links col-auto" v-else>
+              <a v-for="(link, idx) in project.links" :key="idx" :href="link.url" target="_blank">
+                {{ link.text }}
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
 
     <!-- Layout Desktop -->
     <div v-else>
