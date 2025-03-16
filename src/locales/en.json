@@ -57,6 +57,10 @@
   "seeThisProject": "Check out this project on Github as well",
   "Development": "Web Application and Custom System Development",
   "DevelopmentDescription": "Creation of websites, administrative systems, and custom web solutions using modern technologies like Vue.js, Laravel, HTML, CSS, and Bootstrap. I develop projects tailored to each client's specific needs, ensuring usability, responsive design, and efficiency.",
+  "conectaDescription": "New visual identity for the Transportation Department of the city of Ponta Grossa.",
+  "conectaFunction": "Developed a name and logo referencing the connection of people and modernity.",
+  "conectaFunction2": "Utilized the city flag's colors for the primary version of the card.",
+  "conectaFunction3": "Transportation card design reflecting the new identity, conveying movement and referencing key locations in the city.",
   "DevelopmentApps": "Cross-Platform Mobile Application Development",
   "DevelopmentAppsDescription": "Development of mobile applications using Flutter, prioritizing performance, scalability, and intuitive design. I create custom solutions such as notification systems, real-time chats, and offline functionality, catering to both small and large demands.",
   "Consultancy": "Integration and Consumption of REST and HTTPS APIs",
@@ -75,5 +79,11 @@
   "sendButton": "Send message",
   "emailSuccess": "Email sent successfully!",
   "emailError": "Failed to send email. Please try again.",
-  "footerText": "Copyright © 2025 Diluan Matos. All rights reserved."
+  "footerText": "Copyright © 2025 Diluan Matos. All rights reserved.",
+  "articles": "Articles",
+  "articlesDescription": "Articles written as case studies on topics related to UX/UI",
+  "Naming para empresas": "Naming for companies",
+  "Design de Conversão": "Conversion Design",
+  "Mobile first": "Mobile first",
+  "Como melhorar anúncios com Google Web Designer": "How to improve ads with Google Web Designer"
 }

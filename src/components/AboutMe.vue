@@ -8,23 +8,23 @@
           <span>{{ currentWord }}</span>
         </div>
 
-          <div class="col-auto">
-            <p v-animate-on-scroll :key="$i18n.locale" style="margin-bottom: 6px;" class="text-start ">
-              {{ $t('description') }}
+        <div class="col-auto">
+          <p v-animate-on-scroll :key="$i18n.locale" style="margin-bottom: 6px;" class="text-start ">
+            {{ $t('description') }}
+          </p>
+          <div class="custom-text-sequence">
+            <p v-animate-on-scroll :key="$i18n.locale">
+              {{ $t("it's about designing") }}
             </p>
-            <div class="custom-text-sequence">
-              <p v-animate-on-scroll :key="$i18n.locale">
-                {{ $t("it's about designing") }}
-              </p>
-              <p v-animate-on-scroll :key="$i18n.locale"
-                :style="{ color: isDarkMode ? '#2fcbd5' : '#2275ff', fontWeight: 'bold' }">
-                {{ $t('visual experiences') }}
-              </p>
-              <p v-animate-on-scroll :key="$i18n.locale">
-                {{ $t('that tell stories') }}
-              </p>
-            </div>
+            <p v-animate-on-scroll :key="$i18n.locale"
+              :style="{ color: isDarkMode ? '#2fcbd5' : '#2275ff', fontWeight: 'bold' }">
+              {{ $t('visual experiences') }}
+            </p>
+            <p v-animate-on-scroll :key="$i18n.locale">
+              {{ $t('that tell stories') }}
+            </p>
           </div>
+        </div>
 
 
         <!-- Skills Section -->
@@ -44,9 +44,30 @@
 
       <div v-animate-on-scroll style="margin-left:5vw;" class="col-12 col-md-4">
 
+        <!-- About Section -->
+        <div class="row justify-content-center align-items-center text-center"  style="margin-top: 15vh;">
+          <div class="boxSkills col-md-12">
+            <h3 :key="$i18n.locale" style="padding-top: 10px;" data-clickable @click="showAbout = !showAbout">
+              {{ $t('about') }}
+              <i :class="showAbout ? 'fa fa-chevron-up' : 'fa fa-chevron-down'" style="margin-left: 8px;"></i>
+            </h3>
+            <transition name="fade-slide" mode="out-in">
+
+              <div v-if="showAbout" class="row" style="margin-top:20px;">
+
+                <div class="col-12">
+                  <p :key="$i18n.locale">{{ $t('myName') }}</p>
+                  <p :key="$i18n.locale">{{ $t('actually') }}</p>
+                  <p :key="$i18n.locale">{{ $t('aboutMe') }}</p>
+                </div>
+              </div>
+            </transition>
+          </div>
+
+        </div>
 
         <!-- Soft Skills Section -->
-        <div class="row justify-content-center align-items-center text-center" style="margin-top: 15vh;">
+        <div class="row justify-content-center align-items-center text-center">
           <div class="boxSkills col-md-12">
             <div>
               <h3 :key="$i18n.locale" style="padding-top: 10px;" data-clickable @click="softSkills = !softSkills">
@@ -85,31 +106,12 @@
               </transition>
             </div>
           </div>
-        </div>
-        <!-- About Section -->
-        <div class="row justify-content-center align-items-center text-center">
-          <div class="boxSkills col-md-12">
-            <h3 :key="$i18n.locale" style="padding-top: 10px;" data-clickable @click="showAbout = !showAbout">
-              {{ $t('about') }}
-              <i :class="showAbout ? 'fa fa-chevron-up' : 'fa fa-chevron-down'" style="margin-left: 8px;"></i>
-            </h3>
-            <transition name="fade-slide" mode="out-in">
-
-              <div v-if="showAbout" class="row" style="margin-top:20px;">
-
-                <div class="col-12">
-                  <p :key="$i18n.locale">{{ $t('myName') }}</p>
-                  <p :key="$i18n.locale">{{ $t('actually') }}</p>
-                  <p :key="$i18n.locale">{{ $t('aboutMe') }}</p>
-                </div>
-              </div>
-            </transition>
-          </div>
           <div class="col-6 mt-4">
             <a data-clickable class="mt-3 botaoDownload" :href="curriculoLink" download>{{
               $t('downloadResume') }}</a>
           </div>
         </div>
+        
       </div>
     </div>
   </div>

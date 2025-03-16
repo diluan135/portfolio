@@ -63,6 +63,10 @@
   "ConsultancyDescription": "Consultoria especializada para consumo e integração de APIs REST em sistemas existentes ou novos projetos. Implemento funcionalidades como autenticação, manipulação de dados massivos e comunicação em tempo real, garantindo a integração perfeita entre serviços.",
   "InterfaceDesign": "Design de Interfaces e Experiência do Usuário (UI/UX)",
   "InterfaceDesignDescription": "Criação de designs modernos, funcionais e alinhados às melhores práticas de experiência do usuário. Utilizando ferramentas como Photoshop e Illustrator, desenvolvo interfaces que combinam elegância e eficiência, proporcionando uma experiência agradável e intuitiva para os usuários.",
+  "conectaDescription": "Nova identidade visual do departamento de Transporte da cidade de Ponta Grossa.",
+  "conectaFunction": "Desenvolvido nome e logomarca com referência a conexão de pessoas e modernidade.",
+  "conectaFunction2": "Utilizado cores da bandeira da cidade para a versão principal do cartão.",
+  "conectaFunction3": "Design do cartão de transporte remetendo a nova identidade, transmitindo movimento e referenciado a lugares importantes da cidade.",
   "offerServices": "Serviços oferecidos",
   "Escuta": "Escuta",
   "seeThisOnGithub": "Veja este projeto no Github",
@@ -75,5 +79,11 @@
   "sendButton": "Enviar mensagem",
   "emailSuccess": "Email enviado com sucesso!",
   "emailError": "Falha ao enviar email. Tente novamente.",
-  "footerText": "Copyright © 2025 Diluan Matos. Todos os direitos reservados."
+  "footerText": "Copyright © 2025 Diluan Matos. Todos os direitos reservados.",
+  "articles": "Artigos",
+  "articlesDescription": "Artigos feitos como caso de estudo em assuntos relacionados a UX/UI",
+  "Naming para empresas": "Naming para empresas",
+  "Design de Conversão": "Design de Conversão",
+  "Mobile first": "Mobile first",
+  "Como melhorar anúncios com Google Web Designer": "Como melhorar anúncios com Google Web Designer"
 }

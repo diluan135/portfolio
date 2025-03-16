@@ -1,5 +1,6 @@
 <template>
-  <div  class="box2">
+  <div class="box2">
+    <h1 v-animate-on-scroll class="mb-3">{{ $t('projects') }}</h1>
     <!-- Layout Mobile: renderiza cada projeto sequencialmente -->
     <div v-if="isMobile" class="projects-mobile">
       <div v-for="(project, index) in projects" :key="index" class="project-item-mobile">
@@ -21,19 +22,42 @@
           <hr class="linha" />
           <div class="row align-items-center">
             <div class="tech-icons col-auto">
-              <img
-                v-for="(tech, idx) in project.techs"
-                :key="idx"
-                :src="tech.src"
-                :alt="tech.alt"
-                class="tech-icon"
-              />
+              <img v-for="(tech, idx) in project.techs" :key="idx" :src="tech.src" :alt="tech.alt" class="tech-icon" />
             </div>
-            <div data-clickable class="links col-auto">
-              <a v-for="(link, idx) in project.links" :key="idx" :href="link.url" target="_blank">
-                {{ link.text }}
-              </a>
-            </div>
+            <div data-clickable class="links col-auto"
+                  v-if="currentProject.title === 'Articles' || currentProject.title === 'Artigos'">
+                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank"
+                    style="display: block; margin-bottom: 5px;">
+                    {{ link.text }}
+                  </a>
+                </div>
+                <div data-clickable class="links col-auto" v-else>
+                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank">
+                    {{ link.text }}
+                  </a>
+                </div> <div data-clickable class="links col-auto"
+                  v-if="currentProject.title === 'Articles' || currentProject.title === 'Artigos'">
+                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank"
+                    style="display: block; margin-bottom: 5px;">
+                    {{ link.text }}
+                  </a>
+                </div>
+                <div data-clickable class="links col-auto" v-else>
+                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank">
+                    {{ link.text }}
+                  </a>
+                </div> <div data-clickable class="links col-auto"
+                  v-if="currentProject.title === 'Articles' || currentProject.title === 'Artigos'">
+                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank"
+                    style="display: block; margin-bottom: 5px;">
+                    {{ link.text }}
+                  </a>
+                </div>
+                <div data-clickable class="links col-auto" v-else>
+                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank">
+                    {{ link.text }}
+                  </a>
+                </div>
           </div>
         </div>
       </div>
@@ -44,24 +68,16 @@
       <div class="projects-container">
         <!-- Coluna da esquerda: imagens empilhadas verticalmente -->
         <div class="left-column">
-          <div
-            class="project-image"
-            v-for="(project, index) in projects"
-            :key="index"
-            ref="projectRefs"
-            :class="{ visible: index === 0 }"
-          >
+          <div class="project-image" v-for="(project, index) in projects" :key="index" ref="projectRefs"
+            :class="{ visible: index === 0 }">
             <img :src="project.image" :alt="project.title" />
           </div>
         </div>
         <!-- Coluna da direita: fixa (sticky) com os detalhes do projeto atual -->
         <div v-animate-on-scroll class="right-column">
           <div style="padding-right: 30px;" class="indicator-column">
-            <div
-              v-for="(project, index) in projects"
-              :key="index"
-              :class="['indicator-dot', { active: currentProjectIndex === index }]"
-            ></div>
+            <div v-for="(project, index) in projects" :key="index"
+              :class="['indicator-dot', { active: currentProjectIndex === index }]"></div>
           </div>
           <transition name="fade" mode="out-in" appear>
             <div class="sticky-info" v-if="currentProject" :key="currentProject.title">
@@ -78,21 +94,25 @@
               <hr class="linha" style="width: 70%;" />
               <div class="row align-items-center">
                 <div class="tech-icons col-auto">
-                  <img
-                    v-for="(tech, idx) in currentProject.techs"
-                    :key="idx"
-                    :src="tech.src"
-                    :alt="tech.alt"
-                    class="tech-icon"
-                  />
+                  <img v-for="(tech, idx) in currentProject.techs" :key="idx" :src="tech.src" :alt="tech.alt"
+                    class="tech-icon" />
                 </div>
-                <div data-clickable class="links col-auto">
+                <!-- Condicional para exibir os links verticalmente se o título for Articles ou Artigos -->
+                <div data-clickable class="links col-auto"
+                  v-if="currentProject.title === 'Articles' || currentProject.title === 'Artigos'">
+                  <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank"
+                    style="display: block; margin-bottom: 5px;">
+                    {{ link.text }}
+                  </a>
+                </div>
+                <div data-clickable class="links col-auto" v-else>
                   <a v-for="(link, idx) in currentProject.links" :key="idx" :href="link.url" target="_blank">
                     {{ link.text }}
                   </a>
                 </div>
               </div>
             </div>
+
           </transition>
         </div>
       </div>
@@ -204,6 +224,46 @@ export default {
             { src: require("@/assets/bootstrap.png"), alt: "Bootstrap" },
             { src: require("@/assets/mysql.png"), alt: "MySql" },
             { src: require("@/assets/laravel.png"), alt: "Laravel" },
+          ],
+        },
+        {
+          title: "Conecta PG",
+          image: require("@/assets/cartaoConecta.png"),
+          description: this.$t("conectaDescription"),
+          functions: [
+            this.$t("conectaFunction"),
+            this.$t("conectaFunction2"),
+            this.$t("conectaFunction3"),
+          ],
+          links: [
+          ],
+          techs: [
+          ],
+        },
+
+        {
+          title: this.$t("articles"),
+          image: require("@/assets/statue.png"),
+          description: this.$t("articlesDescription"),
+          links: [
+            {
+              text: this.$t("Mobile first"),
+              url: "https://agenciayard.com/blog/mobile-first/",
+            },
+            {
+              text: this.$t("Naming para empresas"),
+              url: "https://agenciayard.com/blog/naming-para-empresa/",
+            },
+            {
+              text: this.$t("Design de Conversão"),
+              url: "https://agenciayard.com/blog/design-de-conversao/",
+            },
+            {
+              text: this.$t("Como melhorar anúncios com Google Web Designer"),
+              url: "https://agenciayard.com/blog/como-melhorar-resultados-dos-meus-anuncios-com-google-web-designer/",
+            },
+          ],
+          techs: [
           ],
         },
       ],
