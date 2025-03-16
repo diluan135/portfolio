@@ -135,6 +135,13 @@ export default {
 </script>
 
 <style>
+@media (max-width: 768px) {
+    .language-toggle{
+    padding-left: 5vw;
+}
+
+}
+
 .language-toggle p {
     display: flex;
     align-items: center;

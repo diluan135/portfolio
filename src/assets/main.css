@@ -402,6 +402,16 @@
     background-color: #2fcbd5;
 }
 
+@media (max-width: 768px) {
+    .box3 {
+        margin-top: -30px;
+    }
+    .box3::before,
+    .box3::after {
+        display: none;
+    }
+}
+
 .boxSkills {
     background-color: rgba(255, 255, 255, 1);
     padding: 20px;
