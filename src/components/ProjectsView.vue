@@ -108,7 +108,14 @@ export default {
   data() {
     return {
       isMobile: false,
-      projects: [
+      projects: [],
+      currentProject: null,
+      observer: null,
+    };
+  },
+  computed: {
+    translatedProjects() {
+      return [
         {
           title: "Escuta",
           image: require("@/assets/escuta/1.png"),
@@ -247,15 +254,22 @@ export default {
           techs: [
           ],
         },
-      ],
-      currentProject: null,
-      observer: null,
-    };
-  },
-  computed: {
+      ];
+    },
     currentProjectIndex() {
       return this.projects.indexOf(this.currentProject);
     },
+  },
+  watch: {
+    '$i18n.locale': {
+      immediate: true,
+      handler() {
+        this.projects = this.translatedProjects;
+        if (this.currentProject) {
+          this.currentProject = this.projects.find(p => p.title === this.currentProject.title) || null;
+        }
+      }
+    }
   },
   mounted() {
     this.checkMobile();
